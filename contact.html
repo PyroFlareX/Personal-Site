@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact — Zack Dell</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="name">Zack Dell</h1>
+      <nav class="nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="resume.html">Resume</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section id="contact-page">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:zackdell@pm.me">zackdell@pm.me</a></p>
+      <form id="contact-form" action="https://formspree.io/f/xlgwabwk" method="POST" onsubmit="return false;">
+        <input name="name" placeholder="Your name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Your message to me" required></textarea>
+        <button type="submit">Send</button>
+        <p id="form-status" style="display:none;margin-top:10px;text-align:center;"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap"><div>© Zack Dell — <a href="mailto:zackdell@pm.me">zackdell@pm.me</a></div><div class="social-links"><a href="https://github.com" target="_blank" rel="noopener" title="GitHub">GitHub</a></div></div></footer>
+  <script src="scripts.js"></script>
+</body>
+</html>

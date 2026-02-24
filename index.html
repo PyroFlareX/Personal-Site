@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="name">Zack Dell</h1>
+      <nav class="nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="resume.html">Resume</a><a href="contact.html">Contact</a></nav>
+    </div>
+  </header>
+
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section id="hero">
+      <div class="hero-left">
+        <h2>Systems engineering & C++ for manufacturing and electronics</h2>
+        <p class="lead">I design and ship reliable embedded systems, firmware, and automation for production environments.</p>
+        <p><a class="cta" href="projects.html">See projects</a> <a class="cta ghost" href="services.html">Services</a></p>
+      </div>
+      <div class="hero-right">
+        <div id="hero-carousel" class="carousel">
+          <!-- populated by scripts.js -->
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <h2>Featured Projects</h2>
+      <div id="projects" class="grid">Loading…</div>
+      <p class="more"><a href="projects.html">View all projects →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+	<div class="wrap">
+      <div>© Zack Dell — <a href="mailto:zackdell@pm.me">zackdell@pm.me</a></div>
+      <div class="social-links"><a href="https://github.com" target="_blank" rel="noopener" title="GitHub">GitHub</a></div>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-bg" data-close></div>
+    <article class="modal-card">
+      <button class="modal-close" data-close>&times;</button>
+      <div class="modal-content"></div>
+    </article>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
