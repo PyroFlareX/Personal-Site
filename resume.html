@@ -12,6 +12,222 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000'/><text x='50' y='75' font-size='65' font-weight='bold' text-anchor='middle' fill='%23fff' font-family='sans-serif'>ZD</text></svg>">
   <title>Resume — Zack Dell</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .resume-generator {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      display: none;
+    }
+    .resume-generator.show {
+      display: block;
+    }
+    .generator-section {
+      margin-bottom: 1.5rem;
+    }
+    .generator-section h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+    }
+    .api-key-wrapper {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .api-key-wrapper input {
+      flex: 1;
+      padding: 0.5rem;
+      font-family: monospace;
+      font-size: 0.85rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .api-key-wrapper button {
+      padding: 0.5rem 1rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .api-key-wrapper button:hover {
+      background: #0056b3;
+    }
+    .api-key-hint {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    #job-description-input {
+      width: 100%;
+      min-height: 150px;
+      padding: 0.75rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      margin-bottom: 0.75rem;
+    }
+    .button-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .button-group button {
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    #generate-tailored-btn {
+      background: #28a745;
+      color: white;
+    }
+    #generate-tailored-btn:hover {
+      background: #218838;
+    }
+    #download-full-resume {
+      background: #17a2b8;
+      color: white;
+    }
+    #download-full-resume:hover {
+      background: #138496;
+    }
+    #download-tailored-resume {
+      background: #ffc107;
+      color: #333;
+      display: none;
+    }
+    #download-tailored-resume:hover {
+      background: #e0a800;
+    }
+    #tailor-status {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #e7f3ff;
+      border-left: 3px solid #007bff;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      min-height: 1.5rem;
+    }
+    #resume-preview {
+      padding: 2rem;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      color: #222;
+    }
+    .resume-content {
+      color: #222;
+      background: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .resume-content a {
+      color: #0056b3;
+      text-decoration: none;
+    }
+    .resume-content a:hover {
+      text-decoration: underline;
+    }
+    .resume-content h1 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.8rem;
+      color: #000;
+      font-weight: 700;
+    }
+    .resume-content .tagline {
+      font-style: italic;
+      margin: 0 0 0.5rem 0;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .resume-content section {
+      margin-bottom: 1.5rem;
+      page-break-inside: avoid;
+    }
+    .resume-header {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #000;
+    }
+    .resume-section {
+      margin-bottom: 1.5rem;
+    }
+    .resume-section h2 {
+      font-size: 1.15rem;
+      border-bottom: 2px solid #000;
+      padding-bottom: 0.5rem;
+      margin: 1rem 0 0.75rem 0;
+      color: #000;
+      font-weight: 700;
+    }
+    .resume-work, .resume-project {
+      margin-bottom: 1.25rem;
+      page-break-inside: avoid;
+    }
+    .resume-work h3, .resume-project h3 {
+      margin: 0.75rem 0 0.25rem 0;
+      font-size: 1.05rem;
+      color: #222;
+      font-weight: 600;
+    }
+    .resume-work p, .resume-project p {
+      margin: 0.25rem 0;
+      color: #222;
+    }
+    .resume-content ul {
+      margin: 0.5rem 0 0.5rem 1.5rem;
+      color: #222;
+      padding-left: 0;
+    }
+    .resume-content li {
+      margin-bottom: 0.35rem;
+      color: #222;
+      list-style-type: disc;
+    }
+    .resume-project-specs {
+      margin: 0.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .resume-project-specs span {
+      display: inline-block;
+      background: #e8e8e8;
+      color: #222;
+      padding: 0.3rem 0.65rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      border: 1px solid #ccc;
+      font-weight: 500;
+    }
+    .competencies {
+      columns: 2;
+      column-gap: 1.5rem;
+    }
+    @media print {
+      .resume-section {
+        page-break-inside: avoid;
+      }
+      .resume-work, .resume-project {
+        page-break-inside: avoid;
+      }
+    }
+    @media print {
+      .resume-generator {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -30,43 +246,46 @@
       <p><a href="mailto:zackdell@pm.me">zackdell@pm.me</a></p>
     </section>
 
-    <section class="resume-section">
-      <h2>Core Competencies</h2>
-      <ul class="competencies">
-        <li>C++ firmware & embedded systems</li>
-        <li>PCB design & electronics</li>
-        <li>Real-time systems & manufacturing automation</li>
-        <li>GPU compute (Vulkan, CUDA)</li>
-        <li>Game engine & graphics (OpenGL, C++)</li>
-        <li>Robotics & control systems</li>
-      </ul>
+    <!-- AI Resume Tailor Generator (Internal Use) -->
+    <section class="resume-generator show">
+      <h2>📋 Resume Tailor (Internal)</h2>
+      <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Paste a job description below and generate a tailored resume optimized for that role using AI matching.</p>
+
+      <div class="generator-section">
+        <h3>1. Save API Key</h3>
+        <div class="api-key-wrapper">
+          <input type="password" id="claude-api-key-input" placeholder="sk-ant-..." />
+          <button id="save-api-key-btn">Save Key</button>
+        </div>
+        <div class="api-key-hint">
+          Get your Claude API key at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>. 
+          Stored locally in your browser, never sent elsewhere except to Anthropic's API.
+        </div>
+      </div>
+
+      <div class="generator-section">
+        <h3>2. Paste Job Description</h3>
+        <textarea id="job-description-input" placeholder="Paste the full job description, requirements, and desired skills..."></textarea>
+      </div>
+
+      <div class="button-group">
+        <button id="generate-tailored-btn">🚀 Generate Tailored Resume</button>
+        <button id="download-full-resume">⬇️ Download Full Resume</button>
+        <button id="download-tailored-resume">⬇️ Download Tailored Resume</button>
+      </div>
+
+      <div id="tailor-status"></div>
     </section>
 
-    <section class="resume-section">
-      <h2>Work Experience</h2>
-      <div class="redacted">Redacted for Privacy</div>
+    <section class="resume-section" style="margin-top: 2rem;">
+      <h2>Full Resume</h2>
+      <div id="resume-preview">Loading…</div>
     </section>
 
-    <section class="resume-section">
-      <div id="resume-projects">Loading…</div>
-    </section>
-
-    <section class="resume-section">
-      <h2>Services Offered</h2>
-      <ul>
-        <li>Embedded C++ Development</li>
-        <li>Systems Engineering & Architecture</li>
-        <li>Manufacturing Automation</li>
-        <li>Electronics & Firmware Design</li>
-      </ul>
-    </section>
-
-    <div class="resume-footer">
-      <p>Full project portfolio available at <a href="projects.html">Projects</a></p>
-    </div>
   </main>
 
   <footer class="site-footer"><div class="wrap"><div>© Zack Dell — <a href="mailto:zackdell@pm.me">zackdell@pm.me</a></div><div class="social-links"><a href="https://github.com/PyroFlareX" target="_blank" rel="noopener" title="GitHub">GitHub</a></div></div></footer>
   <script src="scripts.js"></script>
+  <script src="resume-generator.js"></script>
 </body>
 </html>

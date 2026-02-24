@@ -10,7 +10,14 @@
     "images": ["assets/rpi-cm5.svg"],
     "specs": {"Battery":"Li-ion 1S support","Charger":"PMIC with power-path (BQ25975)","Protection":"Hot-swap & thermal","Networking":"Pi5 Onboard, boosted by eSIM and RFID capabilities"},
     "outcome": "Reliable battery-backed CM5 deployments in mobile test rigs.",
-    "link": ""
+    "link": "",
+    "highlights": [
+      "Designed multi-layer PCB with schematic capture and optimization",
+      "Integrated PMIC (BQ25975) for power-path charging",
+      "Implemented firmware for safe shutdown and power state management",
+      "Designed hot-swap and thermal protection circuits",
+      "Enabled reliable battery-backed CM5 deployments in mobile test rigs"
+    ]
   },
   {
     "title": "The Long Century",
@@ -23,7 +30,14 @@
     "images": ["assets/long-century.svg"],
     "specs": {"Engine":"Custom C++ engine","Networking":"Deterministic lockstep support","Graphics":"OpenGL-based renderer"},
     "outcome": "Prototypes with deterministic multiplayer gameplay and a moddable map system.",
-    "link": ""
+    "link": "",
+    "highlights": [
+      "Designed and implemented core game engine architecture",
+      "Built economic and political simulation systems",
+      "Implemented OpenGL rendering pipeline with performance optimization",
+      "Developed deterministic lockstep multiplayer networking",
+      "Created moddable map systems and scenario scripting framework"
+    ]
   },
   {
     "title": "Automated Drink Maker",
@@ -36,7 +50,14 @@
     "images": ["assets/drink-maker.svg"],
     "specs": {"Controller":"Arduino Mega","Actuators":"Stepper motors","Sensors":"Flow, temperature"},
     "outcome": "Produced repeatable high-ABV samples for QA and demonstration.",
-    "link": ""
+    "link": "",
+    "highlights": [
+      "Designed Arduino Mega-based control system with stepper motor integration",
+      "Implemented flow and temperature sensors with real-time feedback",
+      "Built safety interlocks and web interface for recipe management",
+      "Achieved repeatable, high-precision sample production for QA",
+      "Enabled demonstration of automated production capabilities"
+    ]
   },
   {
     "title": "Vulkan Compute Accelerator",
@@ -49,7 +70,14 @@
     "images": ["assets/vulkan-accelerator.svg"],
     "specs": {"API":"Vulkan 1.2","Features":"Multi-queue, sparse memory","Use":"Batch shader workflow"},
     "outcome": "Achieved efficient multi-shader orchestration and demonstrable throughput gains.",
-    "link": ""
+    "link": "",
+    "highlights": [
+      "Implemented Vulkan 1.2 compute orchestrator with multi-queue support",
+      "Designed flowgraph abstraction for composable shader pipelines",
+      "Managed GPU synchronization, sparse memory, and batching optimization",
+      "Achieved efficient multi-shader orchestration with demonstrable throughput gains",
+      "Enabled high-throughput compute workload processing"
+    ]
   },
   {
     "title": "SPOT Robot Dog Action Wrapper",
@@ -62,6 +90,13 @@
     "images": ["assets/vulkan-accelerator.svg"],
     "specs": {"API":"SPOT Python","Features":"Bridged Networking","Use":"Remote Automation of SPOT for easier demonstration"},
     "outcome": "Remote Control of the SPOT robot dog, solving several issues of controlling the Dog across the network.",
-    "link": ""
+    "link": "",
+    "highlights": [
+      "Designed network bridge to route control commands across separate network segments",
+      "Wrapped Boston Dynamics SPOT Python API for remote device integration",
+      "Resolved complex networking challenges for reliable robot control",
+      "Enabled seamless remote automation and demonstration capabilities",
+      "Improved usability and accessibility of SPOT control system"
+    ]
   }
 ]
