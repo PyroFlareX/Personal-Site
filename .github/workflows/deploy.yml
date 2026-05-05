@@ -1,10 +1,19 @@
-name: Build Check
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [master, feature/astro-rewrite]
   pull_request:
     branches: [master]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -18,3 +27,17 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run check
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/feature/astro-rewrite'
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
