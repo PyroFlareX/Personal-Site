@@ -1,0 +1,46 @@
+# Caddyfile for zackdell.com
+# Place at: /etc/caddy/Caddyfile
+# Caddy handles HTTPS automatically via Let's Encrypt
+
+zackdell.com {
+    root * /srv/zackdell.com/current
+    file_server
+    encode gzip zstd
+
+    # Clean URLs: serve /path/index.html for /path
+    try_files {path} {path}/index.html
+
+    # Long-lived cache for immutable assets (Astro hashes filenames)
+    @static {
+        path /_astro/* /assets/*
+    }
+    header @static Cache-Control "public, max-age=31536000, immutable"
+
+    # No cache for HTML (new builds are always fresh)
+    @html {
+        path *.html
+    }
+    header @html Cache-Control "no-cache, must-revalidate"
+
+    # RSS content type
+    @rss {
+        path /rss.xml
+    }
+    header @rss Content-Type "application/rss+xml; charset=utf-8"
+
+    # Security headers
+    header {
+        X-Frame-Options "SAMEORIGIN"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+
+    log {
+        output file /srv/zackdell.com/logs/access.log {
+            roll_size 50mb
+            roll_keep 5
+        }
+        format json
+    }
+}
