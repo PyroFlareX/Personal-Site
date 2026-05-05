@@ -1,0 +1,145 @@
+{
+  "personal": {
+    "name": "Zack Dell",
+    "title": "C++ Programmer & Systems Engineer",
+    "email": "zackdell@pm.me",
+    "phone": "(949) 600-3850",
+    "location": "Orange County, CA",
+    "github": "https://github.com/PyroFlareX",
+    "linkedin": "https://linkedin.com/in/zackdell",
+    "summary": "Computer Science graduate from Chapman University with expertise in embedded systems, graphics programming, and full-stack development. Experienced in C++, game development, and teaching programming to diverse audiences."
+  },
+  "education": [
+    {
+      "institution": "Chapman University",
+      "location": "Orange, CA",
+      "degree": "Bachelor of Science in Computer Science",
+      "minor": "Economics",
+      "year": "2025",
+      "courses": [
+        "Programming Languages",
+        "Embedded Systems",
+        "Database Systems",
+        "Operating Systems"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "The Coder School",
+      "position": "Lead Code Coach",
+      "location": "Mission Viejo, CA",
+      "duration": "April 2022 – May 2025",
+      "description": "Lead instructor for programming-based summer camps and one-on-one tutoring for students ages 7–18.",
+      "highlights": [
+        "Ran programming-based summer camps for children ages 7–18 with topics including Scratch, Python, Java, C++, and COBOL",
+        "Personally tutored students one-on-one from basic Python to advanced graphics engine development using OpenGL 3.3+",
+        "Designed and delivered curriculum for diverse skill levels and age groups",
+        "Mentored students in software development best practices and problem-solving techniques"
+      ]
+    },
+    {
+      "company": "Vertical Transport",
+      "position": "Administrator & Field Helper",
+      "location": "Mission Viejo, CA",
+      "duration": "August 2022 – Present",
+      "description": "Multi-role position managing compliance, logistics, IT operations, and field support.",
+      "highlights": [
+        "Filed state compliance forms and maintained regulatory documentation for operational continuity",
+        "Led internal compliance initiatives in safety protocols and PCI-DSS standards",
+        "Coordinated truck and equipment logistics for field operations and job site deployment",
+        "Diagnosed and resolved internal IT issues and technical infrastructure problems",
+        "Transported tools and machinery to job sites as needed for project support"
+      ]
+    },
+    {
+      "company": "Chapman University",
+      "position": "Undergraduate Student Researcher",
+      "location": "Orange, CA",
+      "duration": "August 2022 – May 2024",
+      "description": "Research assistant under Prof. Emad Arasteh, focused on optimization of ORB SLAM 3 algorithm.",
+      "highlights": [
+        "Researched ORB SLAM 3 algorithm to optimize for deterministic runtime execution",
+        "Focused on embedded hardware deployment for drone-based vision systems",
+        "Created runtime environments and comprehensive documentation for the research project",
+        "Proposed and evaluated multiple data optimization methods for algorithm efficiency"
+      ]
+    },
+    {
+      "company": "The Long Century (Hobbyist Project)",
+      "position": "Lead Programmer",
+      "location": "Remote",
+      "duration": "May 2021 – Present",
+      "description": "Lead developer for real-time political and economics simulator game set in the 19th century.",
+      "highlights": [
+        "Lead programmer and developer for hobbyist game 'The Long Century'",
+        "Designed real-time political and economics simulator with complex game systems",
+        "Game currently in pre-alpha development with emphasis on simulation accuracy",
+        "Implemented core gameplay systems, networking, and engine architecture"
+      ]
+    }
+  ],
+  "research": [
+    {
+      "title": "ORB SLAM 3 Algorithm Optimization for Embedded Systems",
+      "institution": "Chapman University",
+      "advisor": "Prof. Emad Arasteh",
+      "duration": "August 2022 – May 2024",
+      "description": "Optimized ORB SLAM 3 visual-inertial odometry algorithm for deterministic execution on embedded drone hardware.",
+      "achievements": [
+        "Analyzed algorithm bottlenecks and proposed optimization strategies",
+        "Developed runtime benchmarking framework for performance validation",
+        "Evaluated multiple data optimization approaches for embedded deployment",
+        "Documented research findings and technical methodology"
+      ]
+    }
+  ],
+  "coreskills": [
+    "C++ programming & embedded systems",
+    "Game development & real-time graphics",
+    "OpenGL & Vulkan graphics programming",
+    "Python development & teaching",
+    "Linux",
+    "Computer vision algorithms (ORB SLAM 3)",
+    "Compliance & regulatory documentation",
+    "IT operations & troubleshooting",
+    "Logistics coordination",
+    "Mentoring & education"
+  ],
+  "technical": [
+    "Languages: C, C++, Java, Python, C#, COBOL",
+    "Graphics: OpenGL 3.3+, Vulkan, Computer Graphics Shaders",
+    "Embedded Systems: Real-time systems, algorithm optimization",
+    "Version Control: Git, source control",
+    "Research: Data optimization, algorithm analysis, embedded deployment",
+    "Teaching: Curriculum design, multi-age group instruction"
+  ],
+  "extracurricular": [
+    {
+      "activity": "Code The Change",
+      "role": "Lead Developer",
+      "duration": "January 2024 – May 2024",
+      "description": "Lead developer for social impact coding initiative"
+    },
+    {
+      "activity": "Chapman Galactic Empire",
+      "role": "President",
+      "duration": "August 2023 – May 2025",
+      "description": "President of gaming and science fiction club"
+    },
+    {
+      "activity": "Computer Science Club",
+      "role": "Member",
+      "duration": "August 2023 – May 2025",
+      "description": "Active member of department computer science club"
+    }
+  ],
+  "services": [
+    "Full-Stack C++ Development",
+    "Game Development & Graphics Programming",
+    "Educational Instruction & Curriculum Design",
+    "Embedded Systems & Real-Time Programming",
+    "Computer Vision & Algorithm Optimization",
+    "Technical Mentoring & Leadership"
+  ]
+}

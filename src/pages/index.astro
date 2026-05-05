@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects', ({ data }) => !data.draft);
+const projects = allProjects.sort((a, b) => b.data.year - a.data.year);
+const featured = projects.slice(0, 4);
+const carouselProjects = projects.slice(0, 4);
+---
+<Base
+  title="Zack Dell — Systems Engineering & C++"
+  description="Systems engineering, embedded firmware, and automation for manufacturing and electronics."
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zack Dell",
+    "url": "https://zackdell.com",
+    "email": "zackdell@pm.me",
+    "sameAs": ["https://github.com/PyroFlareX"],
+    "jobTitle": "Systems Engineer",
+    "description": "Systems engineering, embedded firmware, and automation for manufacturing and electronics."
+  })} />
+
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section id="hero">
+      <div class="hero-left">
+        <h2>Systems engineering & C++ for manufacturing and electronics</h2>
+        <p class="lead">I design and ship reliable embedded systems, firmware, and automation for production environments.</p>
+        <p>
+          <a class="cta" href="/projects">See projects</a>
+          <a class="cta ghost" href="/services">Services</a>
+        </p>
+      </div>
+      <div class="hero-right">
+        <div id="hero-carousel" class="carousel">
+          {carouselProjects.map((p, i) => (
+            <a href={`/projects/${p.slug}`} class="slide" style={`transform: translateX(${i * 100}%)`}>
+              <img src={p.data.images[0] ?? '/assets/placeholder.svg'} alt={p.data.title} onerror="this.src='/assets/placeholder.svg'">
+              <div class="slide-caption">
+                <strong>{p.data.title}</strong>
+                <p>{p.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="featured" style="margin-top: 3rem">
+      <h2>Featured Projects</h2>
+      <div id="projects" class="grid">
+        {featured.map(p => (
+          <ProjectCard
+            title={p.data.title}
+            description={p.data.description}
+            tags={p.data.tags}
+            images={p.data.images}
+            slug={p.slug}
+          />
+        ))}
+      </div>
+      <p class="more"><a href="/projects" style="color:var(--accent)">View all projects →</a></p>
+    </section>
+  </main>
+</Base>
+
+<script>
+  // Hero carousel auto-rotate
+  const slides = Array.from(document.querySelectorAll('#hero-carousel .slide'));
+  if (slides.length > 1) {
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % slides.length;
+      slides.forEach((s, i) => {
+        (s as HTMLElement).style.transform = `translateX(${(i - idx) * 100}%)`;
+      });
+    }, 3500);
+  }
+
+  // Background overlay scroll fade
+  const overlay = document.querySelector('.bg-overlay') as HTMLElement | null;
+  if (overlay) {
+    const update = () => {
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      let t = Math.min(1, window.scrollY / max);
+      t = Math.pow(t, 1.2);
+      overlay.style.opacity = String(t);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+</script>

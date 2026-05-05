@@ -1,0 +1,11 @@
+# Allow search engines to crawl and index the site
+User-agent: *
+Allow: /
+Disallow: /.github/
+Disallow: /.git/
+
+# Sitemaps
+Sitemap: https://zackdell.com/sitemap.xml
+
+# Crawl delay (optional: adjust if needed)
+Crawl-delay: 1

@@ -1,0 +1,51 @@
+---
+interface Props {
+  images: string[];
+  alt: string;
+}
+
+const { images, alt } = Astro.props;
+if (!images || images.length === 0) return;
+---
+<div class="proj-carousel">
+  <div class="carousel-frame">
+    <img id="carousel-img" src={images[0]} alt={alt}>
+  </div>
+  {images.length > 1 && (
+    <div class="carousel-controls">
+      <button class="carousel-prev" id="carousel-prev" aria-label="Previous">◀</button>
+      <div class="carousel-dots" id="carousel-dots">
+        {images.map((_, i) => (
+          <button class={`dot ${i === 0 ? 'active' : ''}`} data-idx={i}></button>
+        ))}
+      </div>
+      <button class="carousel-next" id="carousel-next" aria-label="Next">▶</button>
+    </div>
+  )}
+</div>
+
+<script define:vars={{ images }}>
+  const img = document.getElementById('carousel-img');
+  const prev = document.getElementById('carousel-prev');
+  const next = document.getElementById('carousel-next');
+  const dotsContainer = document.getElementById('carousel-dots');
+  if (!img || !prev || !next) return;
+
+  let idx = 0;
+  const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.dot')) : [];
+
+  function show(i) {
+    idx = (i + images.length) % images.length;
+    img.src = images[idx];
+    img.onerror = () => { img.src = '/assets/placeholder.svg'; };
+    dots.forEach((d, di) => d.classList.toggle('active', di === idx));
+  }
+
+  prev.addEventListener('click', () => show(idx - 1));
+  next.addEventListener('click', () => show(idx + 1));
+  dots.forEach(d => d.addEventListener('click', () => show(parseInt(d.dataset.idx, 10))));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+</script>

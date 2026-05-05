@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Contact — Zack Dell"
+  description="Get in touch with Zack Dell for collaboration, consulting, or technical discussion."
+>
+  <div class="bg-overlay" aria-hidden="true"></div>
+  <main class="wrap">
+    <section id="contact-page">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:zackdell@pm.me" style="color:var(--accent)">zackdell@pm.me</a></p>
+      <form id="contact-form" action="https://formspree.io/f/xlgwabwk" method="POST">
+        <input name="name" placeholder="Your name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Your message" required style="min-height:120px;resize:vertical"></textarea>
+        <button type="submit">Send</button>
+        <p id="form-status" style="display:none;margin-top:10px;text-align:center"></p>
+      </form>
+    </section>
+  </main>
+</Base>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('form-status') as HTMLElement | null;
+      try {
+        const r = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (r.ok) {
+          if (status) { status.textContent = "Message sent! I'll get back to you soon."; status.style.display = 'block'; status.style.color = '#4ade80'; }
+          form.reset();
+          setTimeout(() => { if (status) status.style.display = 'none'; }, 5000);
+        } else {
+          throw new Error('non-ok response');
+        }
+      } catch {
+        if (status) { status.textContent = 'Error sending message. Please email zackdell@pm.me directly.'; status.style.display = 'block'; status.style.color = '#f87171'; }
+      }
+    });
+  }
+</script>

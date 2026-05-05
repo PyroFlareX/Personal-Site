@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  images: string[];
+  slug: string;
+}
+
+const { title, description, tags, images, slug } = Astro.props;
+const thumb = images[0] ?? '/assets/placeholder.svg';
+---
+<article class="card">
+  <img class="thumb" src={thumb} alt={title} onerror="this.src='/assets/placeholder.svg'">
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <div class="tags">{tags.join(' • ')}</div>
+  <a class="btn" href={`/projects/${slug}`} style="margin-top:auto;text-align:center">Details</a>
+</article>

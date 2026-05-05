@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+---
+<Base
+  title="Blog — Zack Dell"
+  description="Weekly dev logs, technical write-ups, and project updates."
+>
+  <div class="bg-overlay" aria-hidden="true"></div>
+  <main class="wrap">
+    <section>
+      <h2>Blog</h2>
+      <p style="color:var(--muted)">Weekly dev logs and project updates. <a href="/rss.xml" style="color:var(--accent)">RSS feed</a></p>
+
+      {allTags.length > 0 && <TagFilter tags={allTags} />}
+
+      {posts.length === 0 ? (
+        <p style="color:var(--muted);font-style:italic">No posts yet — the first one is on its way.</p>
+      ) : (
+        <div class="blog-grid">
+          {posts.map(p => (
+            <div data-tags={JSON.stringify(p.data.tags)}>
+              <BlogCard
+                title={p.data.title}
+                description={p.data.description}
+                pubDate={p.data.pubDate}
+                tags={p.data.tags}
+                slug={p.slug}
+              />
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  </main>
+</Base>

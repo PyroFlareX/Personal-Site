@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects', ({ data }) => !data.draft);
+const projects = allProjects.sort((a, b) => b.data.year - a.data.year);
+
+const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
+---
+<Base
+  title="Projects — Zack Dell"
+  description="Selected projects in embedded systems, PCB design, firmware, and applications."
+>
+  <div class="bg-overlay" aria-hidden="true"></div>
+  <main class="wrap">
+    <section id="projects-page">
+      <h2>Projects</h2>
+      <TagFilter tags={allTags} />
+      <div id="projects-grid" class="grid">
+        {projects.map(p => (
+          <div data-tags={JSON.stringify(p.data.tags)}>
+            <ProjectCard
+              title={p.data.title}
+              description={p.data.description}
+              tags={p.data.tags}
+              images={p.data.images}
+              slug={p.slug}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Base>

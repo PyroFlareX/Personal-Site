@@ -1,0 +1,54 @@
+---
+interface Props {
+  tags: string[];
+  paramName?: string;
+}
+
+const { tags, paramName = 'tag' } = Astro.props;
+const active = Astro.url.searchParams.get(paramName) ?? '';
+---
+<div class="tag-filter">
+  <button class={`tag ${active === '' ? 'active' : ''}`} data-tag="">All</button>
+  {tags.map(tag => (
+    <button class={`tag ${active === tag ? 'active' : ''}`} data-tag={tag}>{tag}</button>
+  ))}
+</div>
+
+<script define:vars={{ paramName }}>
+  document.querySelectorAll('.tag-filter .tag').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag;
+      const url = new URL(window.location.href);
+      if (tag) {
+        url.searchParams.set(paramName, tag);
+      } else {
+        url.searchParams.delete(paramName);
+      }
+      window.history.pushState({}, '', url);
+
+      // Show/hide items
+      const activeTag = tag;
+      document.querySelectorAll('[data-tags]').forEach(item => {
+        const itemTags = JSON.parse(item.dataset.tags || '[]');
+        item.style.display = (!activeTag || itemTags.includes(activeTag)) ? '' : 'none';
+      });
+
+      // Update active state
+      document.querySelectorAll('.tag-filter .tag').forEach(b => {
+        b.classList.toggle('active', b.dataset.tag === activeTag);
+      });
+    });
+  });
+
+  // Apply filter on page load from URL
+  const initialTag = new URL(window.location.href).searchParams.get(paramName) ?? '';
+  if (initialTag) {
+    document.querySelectorAll('[data-tags]').forEach(item => {
+      const itemTags = JSON.parse(item.dataset.tags || '[]');
+      item.style.display = itemTags.includes(initialTag) ? '' : 'none';
+    });
+    document.querySelectorAll('.tag-filter .tag').forEach(b => {
+      b.classList.toggle('active', b.dataset.tag === initialTag);
+    });
+  }
+</script>

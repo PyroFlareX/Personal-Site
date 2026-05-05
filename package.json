@@ -1,0 +1,23 @@
+{
+  "name": "zackdell-personal-site",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.7.13",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/mdx": "^4.2.4",
+    "@astrojs/svelte": "^7.0.3",
+    "@astrojs/rss": "^4.0.11",
+    "svelte": "^5.28.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.8.3"
+  }
+}
