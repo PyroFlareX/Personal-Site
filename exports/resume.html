@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Zack Dell — Resume</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 32px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .resume-header {
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+    .resume-header h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .resume-header .tagline {
+      font-style: italic;
+      color: #444;
+      margin: 2px 0 6px;
+      font-size: 10.5pt;
+    }
+    .resume-header .contact {
+      font-size: 9.5pt;
+      color: #333;
+    }
+    .resume-header .contact a { color: #0056b3; text-decoration: none; }
+
+    /* Section */
+    .section { margin-bottom: 18px; }
+    .section h2 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid #1a1a1a;
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    /* Skills */
+    .skills-grid {
+      columns: 2;
+      column-gap: 2rem;
+      list-style: disc;
+      padding-left: 1.2rem;
+      color: #222;
+    }
+    .skills-grid li { margin-bottom: 3px; break-inside: avoid; }
+
+    /* Experience / Research */
+    .entry { margin-bottom: 13px; page-break-inside: avoid; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .entry-title { font-weight: 700; font-size: 10.5pt; }
+    .entry-duration { font-size: 9pt; color: #555; white-space: nowrap; }
+    .entry-sub { font-size: 9.5pt; color: #444; margin: 1px 0 5px; }
+    .entry ul { padding-left: 1.2rem; color: #222; }
+    .entry li { margin-bottom: 2px; font-size: 10pt; }
+
+    /* Projects */
+    .project { margin-bottom: 13px; page-break-inside: avoid; }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .project-title { font-weight: 700; font-size: 10.5pt; }
+    .project-year { font-size: 9pt; color: #555; }
+    .project-role { font-size: 9.5pt; color: #444; margin: 1px 0 4px; }
+    .project-desc { font-size: 10pt; color: #222; margin-bottom: 4px; }
+    .project-tags {
+      display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 5px;
+    }
+    .project-tag {
+      font-size: 8.5pt;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 1px 7px;
+      border-radius: 10px;
+      color: #333;
+    }
+    .project ul { padding-left: 1.2rem; color: #222; }
+    .project li { margin-bottom: 2px; font-size: 10pt; }
+
+    /* Education */
+    .edu-entry { margin-bottom: 10px; }
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .edu-title { font-weight: 700; font-size: 10.5pt; }
+    .edu-year { font-size: 9pt; color: #555; }
+    .edu-sub { font-size: 9.5pt; color: #444; margin: 1px 0; }
+
+    /* Extracurricular */
+    .extra-list { list-style: none; padding: 0; }
+    .extra-list li { margin-bottom: 5px; font-size: 10pt; color: #222; }
+    .extra-list li strong { font-weight: 600; }
+
+    /* Print */
+    @media print {
+      body { padding: 0; font-size: 10pt; }
+      .section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="resume-header">
+  <h1>Zack Dell</h1>
+  <p class="tagline">C++ Programmer &amp; Systems Engineer</p>
+  <p class="contact">
+    <a href="mailto:zackdell@pm.me">zackdell@pm.me</a> &nbsp;·&nbsp;
+    (949) 600-3850 &nbsp;·&nbsp;
+    Orange County, CA &nbsp;·&nbsp;
+    <a href="https://github.com/PyroFlareX">github.com/PyroFlareX</a> &nbsp;·&nbsp;
+    <a href="https://linkedin.com/in/zackdell">linkedin.com/in/zackdell</a>
+  </p>
+</header>
+
+<section class="section">
+  <h2>Core Competencies</h2>
+  <ul class="skills-grid">
+    <li>C++ programming &amp; embedded systems</li>
+    <li>Game development &amp; real-time graphics</li>
+    <li>OpenGL &amp; Vulkan graphics programming</li>
+    <li>Python development &amp; teaching</li>
+    <li>Linux</li>
+    <li>Computer vision algorithms (ORB SLAM 3)</li>
+    <li>Compliance &amp; regulatory documentation</li>
+    <li>IT operations &amp; troubleshooting</li>
+    <li>Logistics coordination</li>
+    <li>Mentoring &amp; education</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Technical Skills</h2>
+  <ul class="skills-grid">
+    <li>Languages: C, C++, Java, Python, C#, COBOL</li>
+    <li>Graphics: OpenGL 3.3+, Vulkan, Compute Shaders</li>
+    <li>Embedded Systems: Real-time systems, algorithm optimization</li>
+    <li>Version Control: Git</li>
+    <li>Research: Data optimization, algorithm analysis, embedded deployment</li>
+    <li>Teaching: Curriculum design, multi-age group instruction</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Work Experience</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Lead Code Coach — The Coder School</span>
+      <span class="entry-duration">April 2022 – May 2025</span>
+    </div>
+    <p class="entry-sub">Mission Viejo, CA</p>
+    <ul>
+      <li>Ran programming-based summer camps for children ages 7–18 with topics including Scratch, Python, Java, C++, and COBOL</li>
+      <li>Personally tutored students one-on-one from basic Python to advanced graphics engine development using OpenGL 3.3+</li>
+      <li>Designed and delivered curriculum for diverse skill levels and age groups</li>
+      <li>Mentored students in software development best practices and problem-solving techniques</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Administrator &amp; Field Helper — Vertical Transport</span>
+      <span class="entry-duration">August 2022 – Present</span>
+    </div>
+    <p class="entry-sub">Mission Viejo, CA</p>
+    <ul>
+      <li>Filed state compliance forms and maintained regulatory documentation for operational continuity</li>
+      <li>Led internal compliance initiatives in safety protocols and PCI-DSS standards</li>
+      <li>Coordinated truck and equipment logistics for field operations and job site deployment</li>
+      <li>Diagnosed and resolved internal IT issues and technical infrastructure problems</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Undergraduate Student Researcher — Chapman University</span>
+      <span class="entry-duration">August 2022 – May 2024</span>
+    </div>
+    <p class="entry-sub">Orange, CA &nbsp;·&nbsp; Advisor: Prof. Emad Arasteh</p>
+    <ul>
+      <li>Researched ORB SLAM 3 algorithm to optimize for deterministic runtime execution</li>
+      <li>Focused on embedded hardware deployment for drone-based vision systems</li>
+      <li>Created runtime environments and comprehensive documentation for the research project</li>
+      <li>Proposed and evaluated multiple data optimization methods for algorithm efficiency</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <span class="entry-title">Lead Programmer — The Long Century (Hobbyist Project)</span>
+      <span class="entry-duration">May 2021 – Present</span>
+    </div>
+    <p class="entry-sub">Remote</p>
+    <ul>
+      <li>Lead programmer and developer for hobbyist game 'The Long Century'</li>
+      <li>Designed real-time political and economics simulator with complex game systems</li>
+      <li>Implemented core gameplay systems, networking, and engine architecture</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Projects</h2>
+
+  <div class="project">
+    <div class="project-header">
+      <span class="project-title">Compute Module Custom Embedded Device Board</span>
+      <span class="project-year">2026</span>
+    </div>
+    <p class="project-role">Hardware &amp; Firmware Engineer</p>
+    <p class="project-desc">Custom Raspberry Pi CM5 carrier board with integrated battery management, power-path charging (BQ25975 PMIC), and hot-swap protection. Responsibilities included schematic capture, multi-layer PCB layout, and firmware for power state management.</p>
+    <div class="project-tags">
+      <span class="project-tag">Electronics</span>
+      <span class="project-tag">PCB</span>
+      <span class="project-tag">Power Management</span>
+      <span class="project-tag">Firmware</span>
+    </div>
+    <ul>
+      <li>Designed multi-layer PCB with schematic capture and optimization</li>
+      <li>Integrated PMIC (BQ25975) for power-path charging</li>
+      <li>Implemented firmware for safe shutdown and power state management</li>
+      <li>Designed hot-swap and thermal protection circuits</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <span class="project-title">The Long Century</span>
+      <span class="project-year">2024</span>
+    </div>
+    <p class="project-role">Gameplay &amp; Engine Developer</p>
+    <p class="project-desc">Victorian-era grand strategy game on a custom C++ engine with OpenGL rendering and deterministic lockstep multiplayer.</p>
+    <div class="project-tags">
+      <span class="project-tag">C++</span>
+      <span class="project-tag">OpenGL</span>
+      <span class="project-tag">Multiplayer</span>
+      <span class="project-tag">Game Dev</span>
+    </div>
+    <ul>
+      <li>Designed and implemented core game engine architecture</li>
+      <li>Built economic and political simulation systems</li>
+      <li>Implemented OpenGL rendering pipeline with performance optimization</li>
+      <li>Developed deterministic lockstep multiplayer networking</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <span class="project-title">Automated Drink Maker</span>
+      <span class="project-year">2024</span>
+    </div>
+    <p class="project-role">Embedded Systems Engineer</p>
+    <p class="project-desc">Arduino Mega-driven assembly-line beverage automation system with stepper dispensers, flow/temperature sensor feedback, and web-based recipe control.</p>
+    <div class="project-tags">
+      <span class="project-tag">Arduino</span>
+      <span class="project-tag">Automation</span>
+      <span class="project-tag">Embedded</span>
+      <span class="project-tag">Mechanics</span>
+    </div>
+    <ul>
+      <li>Designed control system with stepper motor integration and sensor feedback</li>
+      <li>Built safety interlocks and web interface for recipe management</li>
+      <li>Achieved repeatable, high-precision sample production for QA</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <span class="project-title">Vulkan Compute Accelerator</span>
+      <span class="project-year">2023</span>
+    </div>
+    <p class="project-role">Compute Systems Engineer</p>
+    <p class="project-desc">Vulkan 1.2 compute orchestrator using a flowgraph abstraction to schedule and execute compute shader pipelines across multiple GPU queues.</p>
+    <div class="project-tags">
+      <span class="project-tag">Vulkan</span>
+      <span class="project-tag">Compute</span>
+      <span class="project-tag">C++</span>
+      <span class="project-tag">GPU</span>
+    </div>
+    <ul>
+      <li>Implemented multi-queue Vulkan 1.2 compute orchestrator</li>
+      <li>Designed flowgraph abstraction for composable shader pipelines</li>
+      <li>Managed GPU synchronization, sparse memory, and batching optimization</li>
+    </ul>
+  </div>
+
+  <div class="project">
+    <div class="project-header">
+      <span class="project-title">SPOT Robot Dog Action Wrapper</span>
+      <span class="project-year">2023</span>
+    </div>
+    <p class="project-role">Software Engineer</p>
+    <p class="project-desc">Network bridge wrapping Boston Dynamics SPOT Python SDK to route control commands across isolated network segments for remote automation and demonstration.</p>
+    <div class="project-tags">
+      <span class="project-tag">Robotics</span>
+      <span class="project-tag">Networking</span>
+      <span class="project-tag">C++</span>
+      <span class="project-tag">Python</span>
+    </div>
+    <ul>
+      <li>Designed network bridge to route commands across separate network segments</li>
+      <li>Wrapped SPOT Python SDK for remote device integration</li>
+      <li>Resolved networking challenges for reliable cross-network robot control</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Education</h2>
+  <div class="edu-entry">
+    <div class="edu-header">
+      <span class="edu-title">Bachelor of Science in Computer Science — Chapman University</span>
+      <span class="edu-year">2025</span>
+    </div>
+    <p class="edu-sub">Orange, CA &nbsp;·&nbsp; Minor: Economics</p>
+    <p class="edu-sub">Relevant coursework: Programming Languages, Embedded Systems, Database Systems, Operating Systems</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Extracurricular</h2>
+  <ul class="extra-list">
+    <li><strong>Code The Change</strong> — Lead Developer &nbsp;·&nbsp; Jan 2024 – May 2024</li>
+    <li><strong>Chapman Galactic Empire</strong> — President &nbsp;·&nbsp; Aug 2023 – May 2025</li>
+    <li><strong>Computer Science Club</strong> — Member &nbsp;·&nbsp; Aug 2023 – May 2025</li>
+  </ul>
+</section>
+
+</body>
+</html>
