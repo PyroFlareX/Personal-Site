@@ -100,21 +100,23 @@
     }
   ],
   "skills": {
-    "Languages": ["C", "C++", "Python", "Java", "C#", "GLSL", "HLSL"],
+    "Languages": ["C", "C++", "Rust", "Go", "Python", "Java", "C#", "TypeScript", "PHP", "ASM", "SystemC", "CUDA", "GLSL", "HLSL"],
     "Hardware & PCB": ["Multi-layer PCB Design", "Schematic Capture", "DFM Principles", "Arduino Mega/Uno", "Raspberry Pi CM5", "PMIC Integration (BQ25975)", "Hot-swap & Thermal Protection", "Li-ion Battery Management", "eSIM", "RFID"],
     "Firmware": ["Embedded C/C++ Firmware", "Power State Management", "Safe Shutdown Sequences", "Sensor Feedback Loops", "Stepper Motor Control", "Real-time Control Systems"],
-    "Graphics & GPU": ["Vulkan 1.2", "OpenGL 3.3+", "GLSL Compute Shaders", "GPU Pipeline Architecture", "Multi-queue Dispatch", "Sparse Memory Management"],
+    "Graphics & GPU": ["Vulkan 1.2", "OpenGL 3.3+", "GLSL Compute Shaders", "CUDA Compute", "GPU Pipeline Architecture", "Multi-queue Dispatch", "Sparse Memory Management"],
+    "AI & Agent Systems": ["AI Agent Orchestration", "Multi-agent Pipeline Design", "Agent Security & Trust Boundaries", "LLM API Integration", "Prompt Engineering", "Agentic Workflow Automation"],
     "Systems & Infra": ["Linux Administration (Ubuntu/Debian)", "Proxmox VE Hypervisor", "VM & LXC Containers", "Bash Scripting", "IT Troubleshooting"],
     "Robotics": ["Boston Dynamics SPOT SDK", "ORB-SLAM 3", "Cross-network Robotics Control", "Deterministic Networking"],
-    "Security": ["PCI-DSS", "OSHA 10 General Industry", "Security-Aware Development"],
+    "Security": ["PCI-DSS", "OSHA 10 General Industry", "Security-Aware Development", "Agent Security Management"],
     "Tools": ["Git", "GitHub", "Linux CLI", "Technical Documentation", "KiCad"]
   },
   "coreskills": [
-    "Embedded C/C++ systems engineering",
+    "Embedded C/C++/Rust systems engineering",
     "Multi-layer PCB design & schematic capture",
     "Vulkan 1.2 & OpenGL graphics programming",
+    "CUDA & GPU compute pipeline architecture",
     "Firmware: power management, sensor loops, safe shutdown",
-    "GPU compute pipeline architecture",
+    "AI agent orchestration & agent security management",
     "Linux & systems administration",
     "Robotics & autonomous systems (ORB-SLAM 3, SPOT SDK)",
     "PCI-DSS & OSHA compliance",
