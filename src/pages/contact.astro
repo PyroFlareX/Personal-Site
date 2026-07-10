@@ -5,21 +5,62 @@ import Base from '../layouts/Base.astro';
   title="Contact — Zack Dell"
   description="Get in touch with Zack Dell for collaboration, consulting, or technical discussion."
 >
-  <div class="bg-overlay" aria-hidden="true"></div>
-  <main class="wrap">
-    <section id="contact-page">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:zackdell@pm.me" style="color:var(--accent)">zackdell@pm.me</a></p>
-      <form id="contact-form" action="https://formspree.io/f/xlgwabwk" method="POST">
-        <input name="name" placeholder="Your name" required>
-        <input name="email" type="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Your message" required style="min-height:120px;resize:vertical"></textarea>
-        <button type="submit">Send</button>
-        <p id="form-status" style="display:none;margin-top:10px;text-align:center"></p>
-      </form>
-    </section>
+  <main class="wrap" style="padding-top:3rem">
+
+    <div class="section-header reveal">
+      <span class="eyebrow">// CONTACT</span>
+      <h2>Get in touch</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start" class="contact-grid">
+
+      <!-- Left: channels -->
+      <div class="reveal">
+        <p style="color:var(--muted);margin-bottom:2rem;max-width:44ch">
+          Open to collaboration, consulting, and technical discussion. Targeting defense technology and autonomous systems roles — if you're building something in that space, I'd like to hear about it.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="mailto:zackdell@pm.me" style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(224,148,86,0.5)'" onmouseout="this.style.borderColor='var(--line)'">
+            <span style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);min-width:60px">Email</span>
+            <span style="color:var(--text);font-size:0.95rem">zackdell@pm.me</span>
+          </a>
+          <a href="https://github.com/PyroFlareX" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(224,148,86,0.5)'" onmouseout="this.style.borderColor='var(--line)'">
+            <span style="font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);min-width:60px">GitHub</span>
+            <span style="color:var(--text);font-size:0.95rem">PyroFlareX</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="reveal">
+        <form id="contact-form" action="https://formspree.io/f/xlgwabwk" method="POST">
+          <div style="margin-bottom:1rem">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" placeholder="Your name" required>
+          </div>
+          <div style="margin-bottom:1rem">
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" placeholder="your@email.com" required>
+          </div>
+          <div style="margin-bottom:1.5rem">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="What's on your mind?" required style="min-height:130px;resize:vertical"></textarea>
+          </div>
+          <button type="submit">Send message</button>
+          <p id="form-status" style="display:none;margin-top:12px;font-size:0.9rem;text-align:center"></p>
+        </form>
+      </div>
+
+    </div>
+
   </main>
 </Base>
+
+<style>
+@media (max-width: 760px) {
+  .contact-grid { grid-template-columns: 1fr !important }
+}
+</style>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
@@ -34,14 +75,14 @@ import Base from '../layouts/Base.astro';
           body: new FormData(form),
         });
         if (r.ok) {
-          if (status) { status.textContent = "Message sent! I'll get back to you soon."; status.style.display = 'block'; status.style.color = '#4ade80'; }
+          if (status) { status.textContent = "Message sent! I'll get back to you soon."; status.style.display = 'block'; status.style.color = 'var(--ok)'; }
           form.reset();
           setTimeout(() => { if (status) status.style.display = 'none'; }, 5000);
         } else {
           throw new Error('non-ok response');
         }
       } catch {
-        if (status) { status.textContent = 'Error sending message. Please email zackdell@pm.me directly.'; status.style.display = 'block'; status.style.color = '#f87171'; }
+        if (status) { status.textContent = 'Error sending. Please email zackdell@pm.me directly.'; status.style.display = 'block'; status.style.color = 'var(--err)'; }
       }
     });
   }

@@ -1,145 +1,114 @@
-# Personal Site — Workspace Guide
+# CLAUDE.md — Project Notes for AI Assistants
 
-A professional portfolio and resume site for Zack Dell, showcasing systems engineering, embedded firmware, PCB design, and manufacturing automation expertise. Deployed to zackdell.com via GitHub Pages.
+## Stack
 
-## Architecture
+**Astro 5** static site. Deploys via GitHub Actions → GitHub Pages from `dist/`. Branch: `feature/astro-rewrite`. Live at: `zackdell.com`.
 
-**Static HTML site with JavaScript-powered content loading:**
-- Six main HTML pages (index, about, projects, services, contact, resume)
-- Dynamic project gallery populated from `projects.json` via `scripts.js`
-- AI-powered resume tailor tool (`resume-generator.js`) using Claude API
-- Responsive dark-theme design with modal-based project details
-- Contact form integrated with Formspree
-
-## Key Files
-
-### Pages
-- [index.html](index.html) — Home with hero carousel and featured projects
-- [about.html](about.html) — Professional mission and expertise
-- [projects.html](projects.html) — Full projects grid
-- [services.html](services.html) — Service offerings (C++, systems design, PCB, automation)
-- [contact.html](contact.html) — Email contact form
-- [resume.html](resume.html) — Full resume with AI tailor tool
-
-### Data & Assets
-- `projects.json` — Central project database (title, description, images, specs, tags, year, role, etc.)
-- `resume-data.json` — Resume content (personal, coreskills, experience, merged with projects.json)
-- `assets/` — SVG project thumbnails (drink-maker, vulkan-accelerator, rpi-cm5, long-century, placeholder)
-
-### Scripts
-- [scripts.js](scripts.js) — Core: hero carousel, project grid/modal, contact form handler, scroll-based background overlay
-- [resume-generator.js](resume-generator.js) — Resume AI tailor: Claude API integration, PDF download via html2pdf
-
-### Styling
-- [styles.css](styles.css) — Unified dark theme (navy/black gradient, cyan accent, glassmorphic cards, responsive grid)
-
-### CI/CD
-- [.github/workflows/deploy.yml](.github/workflows/deploy.yml) — Auto-deploys master → gh-pages branch on push
-
-## Content Flow
-
-1. **Projects Data** (`projects.json`) — single source of truth for all projects
-   - Fields: `title`, `description`, `long_description`, `image`, `images[]`, `tags`, `year`, `role`, `specs`, `outcome`, `link`, `repo`, `highlights`
-   - Used by: hero carousel, featured grid, full projects page, resume page, modals
-
-2. **Resume Data** (`resume-data.json`)
-   - Structure: `personal` (name, title, email, location), `coreskills[]`, `experience[]`, `projects` (merged from projects.json)
-   - Rendered on resume.html and by AI tailor tool
-
-3. **Modal System**
-   - Project cards → click "Details" → modal opens with carousel, specs, outcome, links
-   - Supports keyboard navigation (arrow keys, Esc)
-   - Carousel with prev/next buttons and dot indicators
-
-4. **Form Submission**
-   - contact.html form posts to Formspree endpoint
-   - Fetch-based submission with status feedback
-
-5. **AI Resume Tailor** (resume.html)
-   - User pastes job description + provides Claude API key
-   - `resume-generator.js` calls Claude Sonnet API
-   - AI reorders/highlights relevant experience/projects
-   - PDF download via html2pdf library
-
-## Deployment
-
-**GitHub Pages workflow:**
-- Trigger: push to master
-- Action: deploys `./` (entire root) to `gh-pages` branch
-- CNAME: zackdell.com (already configured)
-
-**To deploy manually:**
-```bash
-git push origin master
+```
+npm run dev      # localhost:4321
+npm run build    # outputs dist/
+npm run check    # astro type-check
 ```
 
-The workflow automatically runs and publishes to https://zackdell.com
+Do **not** push `feature/astro-rewrite` — deploy workflow triggers automatically on push and publishes to Pages.
 
-## Development Notes
+---
 
-### Adding/Updating Projects
-1. Edit `projects.json` — add/modify project object
-2. Add image(s) to `assets/` if needed
-3. Commit → auto-published on push
+## Directory Layout
 
-### Updating Resume
-1. Edit `resume-data.json` (personal, coreskills, experience)
-2. Or edit `projects.json` — projects auto-merge into resume
-3. Resume page loads and renders on page open
+```
+src/
+  layouts/
+    Base.astro          # every page inherits this — fonts, nav, footer, skip-link
+    ProjectPage.astro   # wraps [slug].astro
+    BlogPost.astro      # wraps blog/[slug].astro
+  pages/
+    index.astro         # homepage — hero SVG, featured projects, what-I-do, currently
+    about.astro
+    services.astro
+    contact.astro
+    resume.astro        # server-side rendered, AI tailor at bottom in <details>
+    projects/
+      index.astro
+      [slug].astro      # datasheet-style project detail
+    blog/
+      index.astro
+      [slug].astro
+    rss.xml.js
+  components/
+    ProjectCard.astro   # whole-card <a>, accepts title/description/tags/images/slug/year/role
+    BlogCard.astro
+    TagFilter.astro
+    ImageCarousel.astro
+  content/
+    projects/           # *.md — title, description, tags, year, role, images, specs, highlights, outcome
+    blog/               # *.md — currently empty
+    config.ts           # zod schemas for both collections
+  data/
+    resume-data.json    # canonical resume data (source: profile.json 2026-03-17)
+  styles/
+    global.css          # full design system — do not add inline styles for tokens
+public/
+  assets/
+    projects/           # project images — rpi-cm5-board.png (KiCad render), SVG diagrams
+  CNAME               # zackdell.com
+  robots.txt
+```
 
-### Styling
-- CSS variables: `--bg`, `--card`, `--accent`, `--accent-2`, `--muted`, `--text` (defined in `:root`)
-- Responsive: 900px breakpoint for header layout
-- Print-safe: resume styles include `@media print` rules
+---
 
-### SEO & Meta
-- Each page has `<meta description>`, Open Graph tags, JSON-LD schema
-- robots.txt and sitemap.xml present
-- Analytics ready (Plausible stub in comments, can be enabled)
+## Design System
 
-## Common Tasks
+**Theme:** flight hardware / mission control (defense-aerospace industrial, NOT literal space imagery).
 
-### Fix a broken project image
-→ Check `projects.json` for correct `assets/filename.svg` path, or upload new image to `assets/`
+Token reference (`src/styles/global.css :root`):
+```
+--bg0: #05070b       page base (space black)
+--bg1: #0c1017       raised surfaces
+--bg2: #111725       cards
+--line: rgba(148,163,184,0.12)   hairline borders
+--accent: #e09456    PCB copper
+--accent-2: #5fd1f9  signal cyan
+--text: #e8edf4
+--muted: #94a3b8
+--font-display: 'Space Grotesk Variable'
+--font-body: 'Inter Variable'
+--font-mono: 'JetBrains Mono Variable'
+```
 
-### Update hero carousel
-→ Edit `projects.json` — first 4 projects are used by `scripts.js:initCarousel()`
+Fonts installed via `@fontsource-variable/*`, imported in `Base.astro`.
 
-### Change site colors
-→ Update CSS variables in [styles.css:2-9](styles.css#L2-L9)
+Background: engineering grid (48px) + sparse starfield (`body::before` pseudo-element).
 
-### Adjust modal width/height
-→ [styles.css:70](styles.css#L70) — `.modal-card` max-width/max-height
+---
 
-### Disable resume tailor tool
-→ Remove or hide `.resume-generator` div in [resume.html:250-278](resume.html#L250-L278)
+## Content Collections
 
-## Dependencies
+### projects
+Fields: `title`, `description`, `long_description?`, `tags[]`, `year`, `role`, `repo?`, `images[]`, `specs?` (record<string,string>), `outcome?`, `link?`, `highlights[]?`, `draft`.
 
-**Client-side only:**
-- html2pdf.js (loaded dynamically for PDF export)
-- No build step, no package.json
+### blog
+Fields: `title`, `description`, `pubDate`, `updatedDate?`, `tags[]`, `draft`, `author`, `heroImage?`, `autoGenerated`, `sourceRepos[]`.
 
-**External Services:**
-- Formspree (contact form)
-- GitHub Pages (hosting)
+---
 
-## Browser Support
+## Data Sources
 
-Modern browsers (ES6+). Tested on recent Chrome, Firefox, Safari, Edge.
+- **Resume data**: `src/data/resume-data.json` — derived from `C:/Users/Pyros/Documents/Projects/JobApplicationsStuff/profile/profile.json` (2026-03-17). No phone number. No political orgs on public site.
+- **PCB renders**: `public/assets/projects/rpi-cm5-board.png` / `rpi-cm5-board-iso.png` — generated by `kicad-cli pcb render` from `C:/Users/Pyros/Documents/GitHub/PDA-Board/PDA-Board.kicad_pcb` using KiCad 10.0 at `C:/Program Files/KiCad/10.0/bin/kicad-cli.exe`.
 
-## Accessibility
+---
 
-- Semantic HTML5 (header, main, footer, article, section, nav)
-- Modal has `aria-hidden`, keyboard controls, proper focus
-- Images have alt text
-- Color contrast meets WCAG AA
+## Key Decisions (do not revert without reason)
 
-## Next Steps / Enhancements
+- **No phone number** anywhere on the public site.
+- **No political org affiliations** on resume page or anywhere public — specific orgs documented offline only.
+- **AI Resume Tailor** kept but moved to `<details>` at bottom of resume page — do not delete, do not move back to top.
+- **bg-overlay** removed — CSS sets `display:none`, pages no longer emit the div.
+- **ProjectCard** is a whole `<a>` — no inner Details button. Pass `year` and `role` props from all callsites.
 
-- Auto-generate sitemap from projects.json
-- Dark/light mode toggle
-- Project search/filter
-- Testimonials section
-- Blog (extend to markdown)
-- Analytics integration (uncomment Plausible in pages if enabled)
+---
+
+## Python
+
+Use `py` (Windows Launcher, Python 3.12.6, has pip). Not `python` or `python3` (those are devkitPro/msys2, no pip).

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#0c1017"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.045)" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fd1f9"/>
+    </marker>
+    <marker id="arrow-cu" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e09456"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- ── Network segment A (Control) ── -->
+  <rect x="100" y="200" width="420" height="500" rx="16" fill="rgba(224,148,86,0.03)" stroke="rgba(224,148,86,0.25)" stroke-width="2" stroke-dasharray="12,6"/>
+
+  <!-- Control device -->
+  <rect x="180" y="300" width="260" height="160" rx="10" fill="#111725" stroke="#e09456" stroke-width="2.5"/>
+  <!-- screen -->
+  <rect x="200" y="318" width="220" height="100" rx="5" fill="rgba(95,209,249,0.06)" stroke="rgba(95,209,249,0.3)" stroke-width="1.5"/>
+  <!-- scan lines -->
+  <line x1="208" y1="335" x2="412" y2="335" stroke="rgba(95,209,249,0.15)" stroke-width="1"/>
+  <line x1="208" y1="350" x2="412" y2="350" stroke="rgba(95,209,249,0.15)" stroke-width="1"/>
+  <line x1="208" y1="365" x2="412" y2="365" stroke="rgba(95,209,249,0.15)" stroke-width="1"/>
+  <line x1="208" y1="380" x2="412" y2="380" stroke="rgba(95,209,249,0.15)" stroke-width="1"/>
+  <line x1="208" y1="395" x2="412" y2="395" stroke="rgba(95,209,249,0.15)" stroke-width="1"/>
+  <!-- keyboard hint -->
+  <rect x="220" y="428" width="180" height="18" rx="3" fill="none" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+
+  <!-- WiFi/ethernet port -->
+  <rect x="420" y="368" width="20" height="24" rx="2" fill="none" stroke="#e09456" stroke-width="2"/>
+
+  <!-- ── Bridge node (center) ── -->
+  <rect x="680" y="360" width="240" height="180" rx="12" fill="#111725" stroke="#e09456" stroke-width="3"/>
+  <!-- bridge chip -->
+  <rect x="720" y="390" width="160" height="120" rx="6" fill="rgba(224,148,86,0.06)" stroke="rgba(224,148,86,0.5)" stroke-width="1.5"/>
+  <!-- traces -->
+  <line x1="730" y1="420" x2="870" y2="420" stroke="#e09456" stroke-width="1.5"/>
+  <line x1="730" y1="445" x2="870" y2="445" stroke="#5fd1f9" stroke-width="1.5"/>
+  <line x1="730" y1="470" x2="870" y2="470" stroke="#e09456" stroke-width="1.5"/>
+  <!-- ports left -->
+  <rect x="680" y="390" width="15" height="20" rx="2" fill="none" stroke="#e09456" stroke-width="2"/>
+  <rect x="680" y="420" width="15" height="20" rx="2" fill="none" stroke="#e09456" stroke-width="2"/>
+  <!-- ports right -->
+  <rect x="905" y="390" width="15" height="20" rx="2" fill="none" stroke="#e09456" stroke-width="2"/>
+  <rect x="905" y="420" width="15" height="20" rx="2" fill="none" stroke="#e09456" stroke-width="2"/>
+
+  <!-- ── Network segment B (SPOT subnet) ── -->
+  <rect x="1080" y="200" width="420" height="500" rx="16" fill="rgba(95,209,249,0.03)" stroke="rgba(95,209,249,0.2)" stroke-width="2" stroke-dasharray="12,6"/>
+
+  <!-- SPOT robot dog silhouette (line-art quadruped) -->
+  <!-- body -->
+  <rect x="1180" y="350" width="240" height="120" rx="20" fill="none" stroke="#5fd1f9" stroke-width="3"/>
+  <!-- head -->
+  <rect x="1380" y="335" width="80" height="60" rx="10" fill="none" stroke="#5fd1f9" stroke-width="2.5"/>
+  <!-- sensor dot on head -->
+  <circle cx="1440" cy="355" r="7" fill="#e09456"/>
+  <!-- legs: 4 legs, each = upper + lower segment -->
+  <!-- FL -->
+  <line x1="1220" y1="470" x2="1210" y2="530" stroke="#5fd1f9" stroke-width="3"/>
+  <line x1="1210" y1="530" x2="1190" y2="590" stroke="#5fd1f9" stroke-width="3"/>
+  <circle cx="1190" cy="595" r="7" fill="none" stroke="#5fd1f9" stroke-width="2"/>
+  <!-- FR -->
+  <line x1="1260" y1="470" x2="1250" y2="530" stroke="#5fd1f9" stroke-width="3"/>
+  <line x1="1250" y1="530" x2="1230" y2="590" stroke="#5fd1f9" stroke-width="3"/>
+  <circle cx="1230" cy="595" r="7" fill="none" stroke="#5fd1f9" stroke-width="2"/>
+  <!-- RL -->
+  <line x1="1340" y1="470" x2="1350" y2="530" stroke="#5fd1f9" stroke-width="3"/>
+  <line x1="1350" y1="530" x2="1370" y2="590" stroke="#5fd1f9" stroke-width="3"/>
+  <circle cx="1370" cy="595" r="7" fill="none" stroke="#5fd1f9" stroke-width="2"/>
+  <!-- RR -->
+  <line x1="1380" y1="470" x2="1390" y2="530" stroke="#5fd1f9" stroke-width="3"/>
+  <line x1="1390" y1="530" x2="1410" y2="590" stroke="#5fd1f9" stroke-width="3"/>
+  <circle cx="1410" cy="595" r="7" fill="none" stroke="#5fd1f9" stroke-width="2"/>
+  <!-- SDK port on SPOT body -->
+  <rect x="1180" y="395" width="20" height="20" rx="2" fill="none" stroke="#e09456" stroke-width="2"/>
+
+  <!-- ── Connection arrows ── -->
+  <!-- Control → Bridge -->
+  <line x1="440" y1="378" x2="680" y2="420" stroke="#e09456" stroke-width="2.5" stroke-dasharray="12,6" marker-end="url(#arrow-cu)"/>
+  <!-- Bridge → SPOT -->
+  <line x1="920" y1="405" x2="1180" y2="405" stroke="#5fd1f9" stroke-width="2.5" stroke-dasharray="12,6" marker-end="url(#arrow)"/>
+  <!-- return path -->
+  <line x1="1180" y1="430" x2="920" y2="430" stroke="rgba(95,209,249,0.4)" stroke-width="1.5" stroke-dasharray="8,5" marker-end="url(#arrow)"/>
+
+  <!-- Network isolation barrier visual -->
+  <line x1="650" y1="150" x2="650" y2="750" stroke="rgba(148,163,184,0.15)" stroke-width="1.5" stroke-dasharray="6,6"/>
+  <line x1="1050" y1="150" x2="1050" y2="750" stroke="rgba(148,163,184,0.15)" stroke-width="1.5" stroke-dasharray="6,6"/>
+</svg>

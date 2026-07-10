@@ -16,59 +16,184 @@ const projectsForResume = allProjects
     highlights: p.data.highlights ?? [],
     outcome: p.data.outcome ?? '',
   }));
+
+function fmtDate(ym: string | null) {
+  if (!ym) return 'Present';
+  const [y, m] = ym.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[parseInt(m) - 1]} ${y}`;
+}
 ---
 <Base
   title="Resume — Zack Dell"
-  description="Zack Dell's resume — experience, skills, and education in systems engineering and embedded development."
+  description="Zack Dell's resume — embedded systems engineer & C++ developer. Experience, skills, and education."
 >
-  <div class="bg-overlay" aria-hidden="true"></div>
   <main class="wrap resume-view">
+
+    <!-- ── Header ── -->
     <section class="resume-header">
-      <h1 style="color:#fff;margin:0 0 4px 0">{resumeData.personal.name}</h1>
-      <p style="color:var(--muted);margin:0 0 4px 0;font-style:italic">{resumeData.personal.title}</p>
-      <p style="font-size:0.9rem;margin:0;color:var(--muted)">
+      <h1 style="color:var(--text);margin:0 0 4px 0;font-size:clamp(1.8rem,4vw,2.8rem)">{resumeData.personal.name}</h1>
+      <p style="color:var(--accent);margin:0 0 12px 0;font-family:var(--font-mono);font-size:0.85rem;letter-spacing:0.06em">{resumeData.personal.title}</p>
+      <p style="font-size:0.9rem;margin:0;color:var(--muted);font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.04em">
         <a href={`mailto:${resumeData.personal.email}`} style="color:var(--accent)">{resumeData.personal.email}</a>
-        {' · '}{resumeData.personal.phone}
         {' · '}{resumeData.personal.location}
         {' · '}<a href={resumeData.personal.github} target="_blank" rel="noopener" style="color:var(--accent)">GitHub</a>
-        {resumeData.personal.linkedin && <>{' · '}<a href={resumeData.personal.linkedin} target="_blank" rel="noopener" style="color:var(--accent)">LinkedIn</a></>}
       </p>
+      <p style="color:var(--muted);font-size:0.95rem;margin:16px 0 0;max-width:72ch;line-height:1.65">{resumeData.personal.summary}</p>
     </section>
 
-    <!-- AI Resume Tailor -->
-    <section id="resume-tailor" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:1.5rem;margin:2rem 0">
-      <h2 style="margin-top:0;font-size:1.1rem">Resume Tailor</h2>
-      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem">Paste a job description to generate a tailored resume optimized for that role.</p>
+    <!-- ── Skills ── -->
+    <section class="resume-section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        {Object.entries(resumeData.skills).map(([group, items]) => (
+          <div class="skill-group">
+            <h3>{group}</h3>
+            <ul>
+              {(items as string[]).map(s => <li>{s}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
 
-      <div style="margin-bottom:1rem">
-        <label style="font-size:0.9rem;color:var(--muted);display:block;margin-bottom:6px">Claude API Key</label>
-        <div style="display:flex;gap:8px">
-          <input type="password" id="api-key-input" placeholder="sk-ant-..." style="flex:1;font-family:monospace;font-size:0.85rem">
-          <button id="save-key-btn" type="button">Save Key</button>
+    <!-- ── Experience ── -->
+    <section class="resume-section">
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        {resumeData.experience.map(exp => (
+          <div class="timeline-item">
+            <p class="timeline-date">{fmtDate(exp.start)} – {fmtDate(exp.end ?? null)}</p>
+            <p class="timeline-title">{exp.position}</p>
+            <p class="timeline-org">{exp.employer} · {exp.location}</p>
+            <ul class="timeline-bullets">
+              {exp.highlights.map(h => <li>{h}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Research ── -->
+    <section class="resume-section">
+      <h2>Research</h2>
+      <div class="timeline">
+        {resumeData.research.map(r => (
+          <div class="timeline-item">
+            <p class="timeline-date">{fmtDate(r.start)} – {fmtDate(r.end)}</p>
+            <p class="timeline-title">{r.topic}</p>
+            <p class="timeline-org">{r.role} · {r.institution} · Advisor: {r.advisor}</p>
+            <ul class="timeline-bullets">
+              {r.highlights.map(h => <li>{h}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Projects ── -->
+    <section class="resume-section">
+      <h2>Projects</h2>
+      <div class="timeline">
+        {projectsForResume.map(proj => (
+          <div class="timeline-item">
+            <p class="timeline-date">{proj.year}</p>
+            <p class="timeline-title">{proj.title}</p>
+            <p class="timeline-org">{proj.role}</p>
+            {proj.highlights.length > 0 && (
+              <ul class="timeline-bullets">
+                {proj.highlights.map(h => <li>{h}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Education ── -->
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="timeline">
+        {resumeData.education.map(edu => (
+          <div class="timeline-item">
+            <p class="timeline-date">{fmtDate(edu.start)} – {fmtDate(edu.end)}</p>
+            <p class="timeline-title">{edu.degree}</p>
+            <p class="timeline-org">{edu.institution} · {edu.location}{edu.minor ? ` · Minor: ${edu.minor}` : ''}</p>
+            {edu.relevant_courses && edu.relevant_courses.length > 0 && (
+              <ul class="timeline-bullets">
+                {edu.relevant_courses.map(c => <li>{c}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Certifications ── -->
+    <section class="resume-section">
+      <h2>Certifications</h2>
+      <div class="timeline">
+        {resumeData.certifications.map(cert => (
+          <div class="timeline-item">
+            <p class="timeline-title">{cert.name}</p>
+            <p class="timeline-org">{cert.issuer} · {cert.status}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── Leadership ── -->
+    <section class="resume-section">
+      <h2>Leadership & Activities</h2>
+      <div class="timeline">
+        {resumeData.leadership.map((l: { org: string; role: string; start: string; end?: string | null; bullets?: string[] }) => (
+          <div class="timeline-item">
+            <p class="timeline-date">{fmtDate(l.start)} – {fmtDate(l.end ?? null)}</p>
+            <p class="timeline-title">{l.role}</p>
+            <p class="timeline-org">{l.org}</p>
+            {l.bullets && l.bullets.length > 0 && (
+              <ul class="timeline-bullets">
+                {l.bullets.map((b: string) => <li>{b}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── AI Resume Tailor (collapsed, at bottom) ── -->
+    <details class="resume-tailor">
+      <summary>AI Resume Tailor</summary>
+      <div class="resume-tailor-body">
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.2rem">Paste a job description to generate a tailored resume optimized for that role.</p>
+
+        <div style="margin-bottom:1rem">
+          <label for="api-key-input">Claude API Key</label>
+          <div style="display:flex;gap:8px">
+            <input type="password" id="api-key-input" placeholder="sk-ant-..." style="flex:1;font-family:var(--font-mono);font-size:0.85rem">
+            <button id="save-key-btn" type="button">Save Key</button>
+          </div>
+          <p style="font-size:0.8rem;color:var(--muted);margin:6px 0 0 0">
+            Get your key at <a href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a>. Stored locally in your browser only.
+          </p>
         </div>
-        <p style="font-size:0.8rem;color:var(--muted);margin:6px 0 0 0">
-          Get your key at <a href="https://console.anthropic.com/" target="_blank" rel="noopener" style="color:var(--accent)">console.anthropic.com</a>. Stored locally in your browser only.
-        </p>
+
+        <div style="margin-bottom:1rem">
+          <label for="job-desc-input">Job Description</label>
+          <textarea id="job-desc-input" placeholder="Paste the full job description here..." style="width:100%;min-height:150px;resize:vertical;font-size:0.9rem"></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button id="generate-btn" type="button">Generate Tailored Resume</button>
+          <button id="download-full-btn" type="button" class="ghost">Download Full Resume</button>
+          <button id="download-tailored-btn" type="button" style="display:none" class="ghost">Download Tailored Resume</button>
+        </div>
+
+        <div id="tailor-status" style="margin-top:12px;font-size:0.9rem;color:var(--muted)"></div>
+        <div id="tailor-preview" style="margin-top:1.5rem;color:var(--text)"></div>
       </div>
+    </details>
 
-      <div style="margin-bottom:1rem">
-        <label style="font-size:0.9rem;color:var(--muted);display:block;margin-bottom:6px">Job Description</label>
-        <textarea id="job-desc-input" placeholder="Paste the full job description here..." style="width:100%;min-height:150px;resize:vertical;font-size:0.9rem"></textarea>
-      </div>
-
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button id="generate-btn" type="button" style="background:linear-gradient(90deg,#28a745,#20c997)">Generate Tailored Resume</button>
-        <button id="download-full-btn" type="button" style="background:linear-gradient(90deg,#17a2b8,#007bff)">Download Full Resume</button>
-        <button id="download-tailored-btn" type="button" style="display:none;background:linear-gradient(90deg,#ffc107,#fd7e14);color:#222">Download Tailored Resume</button>
-      </div>
-
-      <div id="tailor-status" style="margin-top:12px;font-size:0.9rem;color:var(--muted)"></div>
-    </section>
-
-    <section class="resume-section" style="margin-top:2rem">
-      <h2>Full Resume</h2>
-      <div id="resume-preview" style="color:var(--text)">Loading…</div>
-    </section>
   </main>
 </Base>
 
@@ -93,66 +218,6 @@ const projectsForResume = allProjects
       alert('Invalid key — must start with sk-');
     }
   });
-
-  // Build the full resume HTML
-  function buildHTMLResume(projects, skills, experience) {
-    let html = `<div class="resume-content" style="color:#e6eef6;font-family:system-ui,sans-serif">
-      <section style="margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1)">
-        <h1 style="margin:0 0 4px 0;color:#fff">${resumeData.personal.name}</h1>
-        <p style="margin:0 0 4px 0;font-style:italic;color:#9aa6b2">${resumeData.personal.title}</p>
-        <p style="margin:0;font-size:0.9rem;color:#9aa6b2">${resumeData.personal.email} · ${resumeData.personal.location}</p>
-      </section>
-
-      <section style="margin-bottom:1.5rem">
-        <h2 style="font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:4px;margin:0 0 10px 0;color:#dbeeff">Core Competencies</h2>
-        <ul style="columns:2;column-gap:1.5rem;margin:0;padding-left:1.4rem;color:#9aa6b2">
-          ${skills.map(s => `<li style="margin-bottom:4px">${s}</li>`).join('')}
-        </ul>
-      </section>`;
-
-    if (experience?.length) {
-      html += `<section style="margin-bottom:1.5rem">
-        <h2 style="font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:4px;margin:0 0 10px 0;color:#dbeeff">Work Experience</h2>`;
-      experience.forEach(exp => {
-        html += `<article style="margin-bottom:1.2rem">
-          <h3 style="margin:0 0 2px 0;color:#fff;font-size:1rem">${exp.position}</h3>
-          <p style="margin:0 0 6px 0;color:#9aa6b2;font-size:0.9rem">${exp.company} · ${exp.location} · ${exp.duration}</p>
-          <ul style="margin:0;padding-left:1.4rem;color:#9aa6b2">
-            ${exp.highlights.map(h => `<li style="margin-bottom:3px">${h}</li>`).join('')}
-          </ul>
-        </article>`;
-      });
-      html += `</section>`;
-    }
-
-    if (projects?.length) {
-      html += `<section style="margin-bottom:1.5rem">
-        <h2 style="font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:4px;margin:0 0 10px 0;color:#dbeeff">Projects</h2>`;
-      projects.forEach(proj => {
-        const tags = (proj.tags || []).map(t => `<span style="background:rgba(255,255,255,0.05);color:#9aa6b2;padding:2px 8px;border-radius:12px;font-size:0.8rem;border:1px solid rgba(255,255,255,0.06)">${t}</span>`).join(' ');
-        html += `<article style="margin-bottom:1.2rem">
-          <h3 style="margin:0 0 2px 0;color:#fff;font-size:1rem">${proj.title}</h3>
-          <p style="margin:0 0 4px 0;color:#9aa6b2;font-size:0.9rem">${proj.role} · ${proj.year}</p>
-          <p style="margin:0 0 6px 0;color:#9aa6b2;font-size:0.95rem">${proj.long_description || proj.description}</p>
-          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px">${tags}</div>
-          ${proj.highlights?.length ? `<ul style="margin:0;padding-left:1.4rem;color:#9aa6b2">${proj.highlights.map(h => `<li style="margin-bottom:3px">${h}</li>`).join('')}</ul>` : ''}
-        </article>`;
-      });
-      html += `</section>`;
-    }
-
-    html += `</div>`;
-    return html;
-  }
-
-  let currentResumeHtml = null;
-
-  function displayFullResume() {
-    currentResumeHtml = buildHTMLResume(projectsForResume, resumeData.coreskills, resumeData.experience);
-    const preview = document.getElementById('resume-preview');
-    if (preview) preview.innerHTML = currentResumeHtml;
-  }
-  displayFullResume();
 
   // Generate tailored resume via Claude API
   document.getElementById('generate-btn')?.addEventListener('click', async () => {
@@ -195,12 +260,12 @@ ${jobDesc}`;
       }
 
       const data = await response.json();
-      currentResumeHtml = data.content[0].text;
-      const preview = document.getElementById('resume-preview');
-      if (preview) preview.innerHTML = currentResumeHtml;
+      const tailoredHtml = data.content[0].text;
+      const preview = document.getElementById('tailor-preview');
+      if (preview) preview.innerHTML = tailoredHtml;
       if (status) status.textContent = 'Tailored resume generated.';
       const dlBtn = document.getElementById('download-tailored-btn');
-      if (dlBtn) dlBtn.style.display = 'inline-block';
+      if (dlBtn) dlBtn.style.display = 'inline-flex';
     } catch (err) {
       if (status) status.textContent = `Error: ${err.message}`;
     }
@@ -208,7 +273,9 @@ ${jobDesc}`;
 
   // PDF download
   async function downloadPDF(type) {
-    const content = document.getElementById('resume-preview');
+    const content = type === 'full'
+      ? document.querySelector('main.resume-view')
+      : document.getElementById('tailor-preview');
     if (!content) return;
     const script = document.createElement('script');
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
@@ -217,10 +284,10 @@ ${jobDesc}`;
         ? `Zack_Dell_Resume_Full_${new Date().toISOString().split('T')[0]}.pdf`
         : `Zack_Dell_Resume_Tailored_${new Date().toISOString().split('T')[0]}.pdf`;
       const clone = content.cloneNode(true);
-      clone.style.cssText = 'padding:20px;font-size:11px;line-height:1.5;color:#222;font-family:Arial,sans-serif;background:white';
-      // Make text dark for PDF
+      clone.style.cssText = 'padding:20px;font-size:11px;line-height:1.5;color:#222;font-family:Arial,sans-serif;background:white;max-width:none';
       clone.querySelectorAll('*').forEach(el => {
-        el.style.color = el.style.color?.includes('9aa6b2') || el.style.color?.includes('e6eef6') ? '#333' : el.style.color;
+        el.style.color = '';
+        el.style.background = '';
       });
       html2pdf().set({
         margin: [10, 10, 10, 10],

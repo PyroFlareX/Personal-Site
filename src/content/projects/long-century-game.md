@@ -1,26 +1,26 @@
 ---
 title: "The Long Century"
-description: "A Victorian-era map and grand strategy game using C++, OpenGL, and multiplayer networking."
-long_description: "Developed core engine systems for 'The Long Century', a grand strategy game set in a richly-detailed Victorian world. Work included C++ gameplay systems, OpenGL rendering pipelines, deterministic multiplayer systems, and tools for map editing and scenario scripting."
-tags: ["C++", "OpenGL", "Multiplayer", "Game Dev"]
+description: "A Victorian-era grand strategy game built on a custom C++ engine with deterministic lockstep multiplayer and moddable scripting."
+long_description: "Lead developer on a custom C++ game engine and Victorian-era grand strategy simulator, covering full-stack engine architecture, OpenGL rendering, deterministic multiplayer, and a moddable data-driven rules engine."
+tags: ["C++", "OpenGL", "Multiplayer", "Game Dev", "Engine"]
 year: 2024
-role: "Gameplay & Engine Developer"
+role: "Lead Programmer"
 repo: ""
-images: ["/assets/long-century.svg"]
+images: ["/assets/projects/long-century.svg"]
 specs:
-  Engine: "Custom C++ engine"
-  Networking: "Deterministic lockstep support"
-  Graphics: "OpenGL-based renderer"
-outcome: "Prototypes with deterministic multiplayer gameplay and a moddable map system."
+  Engine: "Custom C++"
+  Graphics: "OpenGL (custom renderer)"
+  Networking: "Deterministic lockstep"
+  Content: "Moddable scripting"
+outcome: "Prototypes with deterministic multiplayer gameplay and a moddable map and scenario system."
 highlights:
-  - "Designed and implemented core game engine architecture"
-  - "Built economic and political simulation systems"
-  - "Implemented OpenGL rendering pipeline with performance optimization"
-  - "Developed deterministic lockstep multiplayer networking"
-  - "Created moddable map systems and scenario scripting framework"
+  - "Designed and implemented from scratch a custom C++ game engine architecture optimized for a complex simulation workload"
+  - "Built an OpenGL-based rendering pipeline with scene graph management and performance-aware draw call batching"
+  - "Implemented deterministic lockstep multiplayer protocol enabling real-time synchronized gameplay across clients"
+  - "Developed economic and political simulation systems with configurable, modular data-driven rules engine and scenario scripting framework"
 draft: false
 ---
 
-The Long Century is a grand strategy game set in the Victorian era, built on a custom C++ engine. The project covered the full stack from engine architecture to gameplay simulation systems.
+The Long Century is a grand strategy game set in the Victorian era, built on a custom C++ engine from the ground up. The project covers the full stack — engine architecture, rendering, simulation, and networking.
 
-The rendering pipeline uses OpenGL with performance-aware batching. Multiplayer uses deterministic lockstep — every client runs the same simulation from the same inputs, eliminating server-side state sync. The map system supports modding through a scenario scripting framework, enabling custom scenarios without engine changes.
+The rendering pipeline uses OpenGL with performance-aware batching and scene graph management. Multiplayer uses deterministic lockstep: every client runs the same simulation from the same inputs, eliminating server-side state synchronization entirely. The economic and political simulation is driven by a modular data-driven rules engine, and the scenario scripting framework lets map authors define custom scenarios without touching the engine.

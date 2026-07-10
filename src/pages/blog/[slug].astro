@@ -1,6 +1,7 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -8,6 +9,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return posts.map(p => ({ params: { slug: p.slug }, props: { post: p } }));
 };
 
+interface Props { post: CollectionEntry<'blog'> }
 const { post } = Astro.props;
 const { data } = post;
 const { Content } = await post.render();

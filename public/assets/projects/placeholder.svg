@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#0c1017"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.045)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <!-- Crop marks -->
+  <line x1="80" y1="60" x2="140" y2="60" stroke="#e09456" stroke-width="2"/>
+  <line x1="80" y1="60" x2="80" y2="120" stroke="#e09456" stroke-width="2"/>
+  <line x1="1520" y1="60" x2="1460" y2="60" stroke="#e09456" stroke-width="2"/>
+  <line x1="1520" y1="60" x2="1520" y2="120" stroke="#e09456" stroke-width="2"/>
+  <line x1="80" y1="840" x2="140" y2="840" stroke="#e09456" stroke-width="2"/>
+  <line x1="80" y1="840" x2="80" y2="780" stroke="#e09456" stroke-width="2"/>
+  <line x1="1520" y1="840" x2="1460" y2="840" stroke="#e09456" stroke-width="2"/>
+  <line x1="1520" y1="840" x2="1520" y2="780" stroke="#e09456" stroke-width="2"/>
+  <!-- Center crosshair -->
+  <line x1="760" y1="380" x2="840" y2="380" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <line x1="800" y1="340" x2="800" y2="420" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <circle cx="800" cy="380" r="40" fill="none" stroke="rgba(224,148,86,0.25)" stroke-width="1.5"/>
+  <circle cx="800" cy="380" r="6" fill="rgba(224,148,86,0.4)"/>
+  <!-- Registration dots -->
+  <circle cx="800" cy="820" r="8" fill="none" stroke="rgba(148,163,184,0.3)" stroke-width="1.5"/>
+  <circle cx="800" cy="820" r="3" fill="rgba(148,163,184,0.3)"/>
+  <circle cx="400" cy="820" r="8" fill="none" stroke="rgba(148,163,184,0.3)" stroke-width="1.5"/>
+  <circle cx="400" cy="820" r="3" fill="rgba(148,163,184,0.3)"/>
+  <circle cx="1200" cy="820" r="8" fill="none" stroke="rgba(148,163,184,0.3)" stroke-width="1.5"/>
+  <circle cx="1200" cy="820" r="3" fill="rgba(148,163,184,0.3)"/>
+</svg>

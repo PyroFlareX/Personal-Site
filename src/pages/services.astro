@@ -3,30 +3,45 @@ import Base from '../layouts/Base.astro';
 ---
 <Base
   title="Services — Zack Dell"
-  description="Services offered: systems design, firmware, PCB design, and automation for manufacturing."
+  description="Services: embedded C++ development, systems engineering, manufacturing automation, and electronics & firmware."
 >
-  <div class="bg-overlay" aria-hidden="true"></div>
-  <main class="wrap">
-    <section id="services-page">
-      <h2>Services</h2>
-      <ul class="services-list">
-        <li>
-          <strong>Embedded C++ Development</strong>
-          <p>Real-time, constrained systems, safety-minded code and hardware integration.</p>
-        </li>
-        <li>
-          <strong>Systems Engineering</strong>
-          <p>Requirements, architecture, test plans, and integration for robust production systems.</p>
-        </li>
-        <li>
-          <strong>Manufacturing Automation</strong>
-          <p>PLC interfaces, motion control, and real-time alerting software.</p>
-        </li>
-        <li>
-          <strong>Electronics & Firmware</strong>
-          <p>PCB design, sensor integration, and firmware bringing hardware to life.</p>
-        </li>
-      </ul>
-    </section>
+  <main class="wrap" style="padding-top:3rem">
+
+    <div class="section-header reveal">
+      <span class="eyebrow">// SERVICES</span>
+      <h2>What I offer</h2>
+    </div>
+
+    <ul class="services-list">
+      <li class="reveal">
+        <p class="service-index">01</p>
+        <strong>Embedded C++ Development</strong>
+        <p>Real-time, constrained systems: safe firmware, hardware integration, and sensor loops optimized for production environments.</p>
+        <p class="service-caps">RTOS-minded · sensor loops · safe shutdown · power state FSM</p>
+      </li>
+      <li class="reveal">
+        <p class="service-index">02</p>
+        <strong>Systems Engineering</strong>
+        <p>Requirements, architecture, test plans, and integration for robust production systems — from spec through verification.</p>
+        <p class="service-caps">architecture docs · integration testing · DFM review · traceability</p>
+      </li>
+      <li class="reveal">
+        <p class="service-index">03</p>
+        <strong>Manufacturing Automation</strong>
+        <p>Assembly-line control, motion control, real-time telemetry, and PLC-adjacent tooling for repeatable production processes.</p>
+        <p class="service-caps">stepper control · closed-loop feedback · recipe management · SCADA-adjacent</p>
+      </li>
+      <li class="reveal">
+        <p class="service-index">04</p>
+        <strong>Electronics & Firmware</strong>
+        <p>Multi-layer PCB design, schematic capture, component selection, DFM review, and firmware to bring hardware to life.</p>
+        <p class="service-caps">KiCad · PMIC integration · multi-layer layout · Gerber-ready</p>
+      </li>
+    </ul>
+
+    <p style="margin-top:3rem;color:var(--muted)" class="reveal">
+      Interested in working together? <a href="/contact">Send a message →</a>
+    </p>
+
   </main>
 </Base>

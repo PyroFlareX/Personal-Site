@@ -5,15 +5,25 @@ interface Props {
   tags: string[];
   images: string[];
   slug: string;
+  year?: number;
+  role?: string;
 }
 
-const { title, description, tags, images, slug } = Astro.props;
-const thumb = images[0] ?? '/assets/placeholder.svg';
+const { title, description, tags, images, slug, year, role } = Astro.props;
+const thumb = images[0] ?? '/assets/projects/placeholder.svg';
 ---
-<article class="card">
-  <img class="thumb" src={thumb} alt={title} onerror="this.src='/assets/placeholder.svg'">
-  <h3>{title}</h3>
-  <p>{description}</p>
-  <div class="tags">{tags.join(' • ')}</div>
-  <a class="btn" href={`/projects/${slug}`} style="margin-top:auto;text-align:center">Details</a>
-</article>
+<a class="card" href={`/projects/${slug}`}>
+  <div class="card-thumb">
+    <img src={thumb} alt={title} loading="lazy">
+  </div>
+  <div class="card-body">
+    {(year || role) && (
+      <p class="card-meta">{year}{year && role ? ' · ' : ''}{role}</p>
+    )}
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="tags">
+      {tags.map(t => <span class="tag">{t}</span>)}
+    </div>
+  </div>
+</a>

@@ -2,6 +2,7 @@
 import ProjectPage from '../../layouts/ProjectPage.astro';
 import ImageCarousel from '../../components/ImageCarousel.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -9,23 +10,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return projects.map(p => ({ params: { slug: p.slug }, props: { project: p } }));
 };
 
+interface Props { project: CollectionEntry<'projects'> }
 const { project } = Astro.props;
 const { data } = project;
 const { Content } = await project.render();
 ---
 <ProjectPage title={data.title} description={data.description}>
   <article class="project-detail">
-    <p style="color:var(--muted);font-size:0.9rem;margin:0 0 8px 0">
+    <p style="font-family:var(--font-mono);font-size:0.78rem;margin:0 0 24px 0">
       <a href="/projects" style="color:var(--accent);text-decoration:none">← Projects</a>
     </p>
-    <h1 style="color:#fff;margin:0 0 6px 0">{data.title}</h1>
+
+    <span class="eyebrow">{data.role}</span>
+    <h1 style="color:var(--text);margin:0 0 8px 0">{data.title}</h1>
     <p class="project-meta">{data.role} · {data.year}</p>
 
-    <ImageCarousel images={data.images} alt={data.title} />
-
-    <div class="spec-tags">
-      {data.tags.map(tag => <span class="spec-tag">{tag}</span>)}
+    <div class="spec-tags" style="margin-bottom:1.5rem">
+      {data.tags.map((tag: string) => <span class="spec-tag">{tag}</span>)}
     </div>
+
+    <ImageCarousel images={data.images} alt={data.title} />
 
     {data.specs && Object.keys(data.specs).length > 0 && (
       <dl class="project-specs">
@@ -40,24 +44,29 @@ const { Content } = await project.render();
 
     {data.highlights && data.highlights.length > 0 && (
       <>
-        <h3 style="color:#dbeeff">Highlights</h3>
+        <h3 style="color:var(--text);margin:2rem 0 1rem;font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)">// HIGHLIGHTS</h3>
         <ul class="project-highlights">
-          {data.highlights.map(h => <li>{h}</li>)}
+          {data.highlights.map((h: string) => <li>{h}</li>)}
         </ul>
       </>
     )}
 
     {data.outcome && (
-      <p><strong style="color:#dbeeff">Outcome:</strong> <span style="color:var(--muted)">{data.outcome}</span></p>
+      <div class="project-outcome">
+        <strong>Outcome</strong>
+        {data.outcome}
+      </div>
     )}
 
     <div class="prose" style="margin-top:2rem">
       <Content />
     </div>
 
-    <div style="margin-top:2rem;display:flex;gap:12px;flex-wrap:wrap">
-      {data.link && <a class="cta" href={data.link} target="_blank" rel="noopener">Project link</a>}
-      {data.repo && <a class="cta ghost" href={data.repo} target="_blank" rel="noopener">Repo</a>}
-    </div>
+    {(data.link || data.repo) && (
+      <div style="margin-top:2rem;display:flex;gap:12px;flex-wrap:wrap">
+        {data.link && <a class="cta" href={data.link} target="_blank" rel="noopener">Project link</a>}
+        {data.repo && <a class="cta ghost" href={data.repo} target="_blank" rel="noopener">Repo</a>}
+      </div>
+    )}
   </article>
 </ProjectPage>

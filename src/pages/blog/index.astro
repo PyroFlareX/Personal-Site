@@ -6,27 +6,31 @@ import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
 const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 ---
 <Base
   title="Blog — Zack Dell"
-  description="Weekly dev logs, technical write-ups, and project updates."
+  description="Technical write-ups, dev logs, and project updates on embedded systems, PCB design, and GPU compute."
 >
-  <div class="bg-overlay" aria-hidden="true"></div>
-  <main class="wrap">
-    <section>
+  <main class="wrap" style="padding-top:3rem">
+
+    <div class="section-header reveal">
+      <span class="eyebrow">// WRITING</span>
       <h2>Blog</h2>
-      <p style="color:var(--muted)">Weekly dev logs and project updates. <a href="/rss.xml" style="color:var(--accent)">RSS feed</a></p>
+    </div>
 
-      {allTags.length > 0 && <TagFilter tags={allTags} />}
-
-      {posts.length === 0 ? (
-        <p style="color:var(--muted);font-style:italic">No posts yet — the first one is on its way.</p>
-      ) : (
+    {posts.length === 0 ? (
+      <div class="blog-empty reveal">
+        <span class="empty-code">// NO POSTS YET</span>
+        <p style="color:var(--muted);margin-bottom:1.5rem">Writing in progress — subscribe via <a href="/rss.xml">RSS</a> to catch the first post.</p>
+        <p style="color:var(--muted);font-size:0.9rem">Topics in the pipeline: CM5 carrier design walkthrough, deterministic lockstep networking, ORB-SLAM 3 optimization notes.</p>
+      </div>
+    ) : (
+      <>
+        {allTags.length > 0 && <TagFilter tags={allTags} />}
         <div class="blog-grid">
           {posts.map(p => (
-            <div data-tags={JSON.stringify(p.data.tags)}>
+            <div class="reveal" data-tags={JSON.stringify(p.data.tags)}>
               <BlogCard
                 title={p.data.title}
                 description={p.data.description}
@@ -37,7 +41,7 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
             </div>
           ))}
         </div>
-      )}
-    </section>
+      </>
+    )}
   </main>
 </Base>

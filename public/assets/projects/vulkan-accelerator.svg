@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#0c1017"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.045)" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fd1f9"/>
+    </marker>
+    <marker id="arrow-hot" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e09456"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- ── Nodes ── -->
+  <!-- Node A: Input Buffer -->
+  <rect x="200" y="390" width="180" height="70" rx="12" fill="#111725" stroke="#e09456" stroke-width="2.5"/>
+  <circle cx="215" cy="405" r="6" fill="#5fd1f9"/>
+  <circle cx="215" cy="425" r="6" fill="#5fd1f9"/>
+  <circle cx="215" cy="445" r="6" fill="#5fd1f9"/>
+  <!-- pads right -->
+  <circle cx="380" cy="415" r="5" fill="#5fd1f9"/>
+  <circle cx="380" cy="435" r="5" fill="#5fd1f9"/>
+
+  <!-- Node B: Preprocess Shader -->
+  <rect x="480" y="260" width="200" height="70" rx="12" fill="#111725" stroke="#e09456" stroke-width="2.5"/>
+  <circle cx="495" cy="280" r="6" fill="#5fd1f9"/>
+  <circle cx="495" cy="310" r="6" fill="#5fd1f9"/>
+  <circle cx="680" cy="295" r="5" fill="#5fd1f9"/>
+
+  <!-- Node C: Filter Shader -->
+  <rect x="480" y="520" width="200" height="70" rx="12" fill="#111725" stroke="#e09456" stroke-width="2.5"/>
+  <circle cx="495" cy="540" r="6" fill="#5fd1f9"/>
+  <circle cx="495" cy="570" r="6" fill="#5fd1f9"/>
+  <circle cx="680" cy="555" r="5" fill="#5fd1f9"/>
+
+  <!-- Node D: Compute Queue 0 — highlighted dispatch path -->
+  <rect x="800" y="340" width="220" height="80" rx="12" fill="rgba(224,148,86,0.08)" stroke="#e09456" stroke-width="3.5"/>
+  <circle cx="820" cy="365" r="6" fill="#e09456"/>
+  <circle cx="820" cy="390" r="6" fill="#e09456"/>
+  <circle cx="1020" cy="380" r="5" fill="#e09456"/>
+
+  <!-- Node E: Compute Queue 1 -->
+  <rect x="800" y="480" width="220" height="80" rx="12" fill="#111725" stroke="#e09456" stroke-width="2.5"/>
+  <circle cx="820" cy="505" r="6" fill="#5fd1f9"/>
+  <circle cx="820" cy="530" r="6" fill="#5fd1f9"/>
+  <circle cx="1020" cy="520" r="5" fill="#5fd1f9"/>
+
+  <!-- Node F: Sync / Semaphore -->
+  <rect x="1120" y="390" width="200" height="80" rx="12" fill="#111725" stroke="rgba(95,209,249,0.6)" stroke-width="2.5"/>
+  <circle cx="1140" cy="415" r="6" fill="#5fd1f9"/>
+  <circle cx="1140" cy="445" r="6" fill="#5fd1f9"/>
+  <circle cx="1320" cy="430" r="5" fill="#5fd1f9"/>
+  <!-- semaphore icon: two crossing arrows inside -->
+  <line x1="1200" y1="410" x2="1220" y2="450" stroke="rgba(95,209,249,0.5)" stroke-width="2"/>
+  <line x1="1220" y1="410" x2="1200" y2="450" stroke="rgba(95,209,249,0.5)" stroke-width="2"/>
+
+  <!-- Node G: Output Buffer -->
+  <rect x="1380" y="390" width="180" height="80" rx="12" fill="#111725" stroke="#e09456" stroke-width="2.5"/>
+  <circle cx="1400" cy="415" r="6" fill="#5fd1f9"/>
+  <circle cx="1400" cy="445" r="6" fill="#5fd1f9"/>
+
+  <!-- ── Edges ── -->
+  <!-- A → B -->
+  <line x1="380" y1="415" x2="480" y2="295" stroke="#5fd1f9" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- A → C -->
+  <line x1="380" y1="435" x2="480" y2="555" stroke="#5fd1f9" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- B → D (hot path) -->
+  <line x1="680" y1="295" x2="800" y2="365" stroke="#e09456" stroke-width="3" marker-end="url(#arrow-hot)"/>
+  <!-- C → D -->
+  <line x1="680" y1="555" x2="800" y2="390" stroke="#5fd1f9" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- C → E -->
+  <line x1="680" y1="555" x2="800" y2="505" stroke="#5fd1f9" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- D → F (hot path) -->
+  <line x1="1020" y1="380" x2="1120" y2="415" stroke="#e09456" stroke-width="3" marker-end="url(#arrow-hot)"/>
+  <!-- E → F -->
+  <line x1="1020" y1="520" x2="1120" y2="445" stroke="#5fd1f9" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- F → G -->
+  <line x1="1320" y1="430" x2="1380" y2="430" stroke="#5fd1f9" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ── Sparse memory pool ── -->
+  <rect x="300" y="700" width="400" height="100" rx="8" fill="none" stroke="rgba(224,148,86,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+  <!-- memory pages -->
+  <rect x="320" y="716" width="50" height="68" rx="3" fill="rgba(224,148,86,0.06)" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <rect x="380" y="716" width="50" height="68" rx="3" fill="rgba(95,209,249,0.06)" stroke="rgba(95,209,249,0.4)" stroke-width="1.5"/>
+  <rect x="440" y="716" width="50" height="68" rx="3" fill="rgba(224,148,86,0.06)" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <rect x="500" y="716" width="50" height="68" rx="3" fill="none" stroke="rgba(148,163,184,0.2)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="560" y="716" width="50" height="68" rx="3" fill="rgba(224,148,86,0.06)" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <rect x="620" y="716" width="50" height="68" rx="3" fill="none" stroke="rgba(148,163,184,0.2)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <!-- link to nodes -->
+  <line x1="500" y1="700" x2="910" y2="560" stroke="rgba(224,148,86,0.3)" stroke-width="1.5" stroke-dasharray="6,4"/>
+</svg>

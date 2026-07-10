@@ -168,3 +168,6 @@ Thumbs.db
 _site/
 .jekyll-cache/
 .jekyll-metadata
+
+# Local screenshot — do not commit
+assets/image.png

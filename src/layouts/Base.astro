@@ -1,4 +1,7 @@
 ---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 
 interface Props {
@@ -9,6 +12,12 @@ interface Props {
 
 const { title, description, ogUrl = Astro.url.href } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return path === '/';
+  return path.startsWith(href);
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -20,40 +29,104 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:description" content={description}>
   <meta property="og:url" content={ogUrl}>
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0b1116">
+  <meta name="theme-color" content="#05070b">
   <link rel="canonical" href={canonicalUrl}>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23000'/><text x='50' y='75' font-size='65' font-weight='bold' text-anchor='middle' fill='%23fff' font-family='sans-serif'>ZD</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230c1017'/><text x='50' y='72' font-size='58' font-weight='700' text-anchor='middle' fill='%23e09456' font-family='sans-serif'>ZD</text></svg>">
   <link rel="alternate" type="application/rss+xml" title="Zack Dell's Blog" href="/rss.xml">
   <title>{title}</title>
   <!-- Analytics: uncomment and replace domain to enable Plausible -->
   <!-- <script defer data-domain="zackdell.com" src="https://plausible.io/js/script.js"></script> -->
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" id="site-header">
     <div class="wrap">
-      <h1 class="name"><a href="/" style="color:inherit;text-decoration:none">Zack Dell</a></h1>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/projects">Projects</a>
-        <a href="/blog">Blog</a>
-        <a href="/services">Services</a>
-        <a href="/resume">Resume</a>
-        <a href="/contact">Contact</a>
+      <p class="name"><a href="/">Zack Dell</a></p>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/" aria-current={isActive('/') ? 'page' : undefined}>Home</a>
+        <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>About</a>
+        <a href="/projects" aria-current={isActive('/projects') ? 'page' : undefined}>Projects</a>
+        <a href="/blog" aria-current={isActive('/blog') ? 'page' : undefined}>Blog</a>
+        <a href="/services" aria-current={isActive('/services') ? 'page' : undefined}>Services</a>
+        <a href="/resume" aria-current={isActive('/resume') ? 'page' : undefined}>Resume</a>
+        <a href="/contact" aria-current={isActive('/contact') ? 'page' : undefined}>Contact</a>
       </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-dropdown" aria-label="Toggle navigation">
+        <span class="icon-open">☰</span>
+        <span class="icon-close">✕</span>
+      </button>
     </div>
+    <nav class="nav-dropdown" id="nav-dropdown" aria-label="Mobile navigation">
+      <a href="/" aria-current={isActive('/') ? 'page' : undefined}>Home</a>
+      <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>About</a>
+      <a href="/projects" aria-current={isActive('/projects') ? 'page' : undefined}>Projects</a>
+      <a href="/blog" aria-current={isActive('/blog') ? 'page' : undefined}>Blog</a>
+      <a href="/services" aria-current={isActive('/services') ? 'page' : undefined}>Services</a>
+      <a href="/resume" aria-current={isActive('/resume') ? 'page' : undefined}>Resume</a>
+      <a href="/contact" aria-current={isActive('/contact') ? 'page' : undefined}>Contact</a>
+    </nav>
   </header>
 
-  <slot />
+  <div id="main-content">
+    <slot />
+  </div>
 
   <footer class="site-footer">
     <div class="wrap">
-      <div>© Zack Dell — <a href="mailto:zackdell@pm.me" style="color:var(--accent)">zackdell@pm.me</a></div>
-      <div class="social-links">
-        <a href="/rss.xml" title="RSS Feed">RSS</a>
-        <a href="https://github.com/PyroFlareX" target="_blank" rel="noopener" title="GitHub">GitHub</a>
+      <div class="footer-grid">
+        <div class="footer-col-name">
+          <p class="name">Zack Dell</p>
+          <p>Embedded systems engineer & C++ developer. Hardware to orbit.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/resume">Resume</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-contact">
+          <a href="mailto:zackdell@pm.me">zackdell@pm.me</a>
+          <a href="https://github.com/PyroFlareX" target="_blank" rel="noopener">GitHub / PyroFlareX</a>
+          <a href="/rss.xml">RSS Feed</a>
+        </div>
       </div>
+      <div class="footer-bottom">© 2026 Zack Dell · Built with Astro</div>
     </div>
   </footer>
+
+  <script>
+    // Scrolled header
+    const header = document.getElementById('site-header');
+    const onScroll = () => {
+      if (header) header.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile hamburger
+    const toggle = document.querySelector('.nav-toggle') as HTMLButtonElement | null;
+    const dropdown = document.getElementById('nav-dropdown');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      dropdown?.classList.toggle('open', !expanded);
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      (el as HTMLElement).style.transitionDelay = `${i * 60}ms`;
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>

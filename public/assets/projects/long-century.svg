@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <rect width="1600" height="900" fill="#0c1017"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.045)" stroke-width="1"/>
+    </pattern>
+    <marker id="route" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#5fd1f9"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+
+  <!-- Hex tile utility: flat-top hexagons, r=80 -->
+  <!-- Row 1 -->
+  <polygon points="400,180 440,110 520,110 560,180 520,250 440,250" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="560,180 600,110 680,110 720,180 680,250 600,250" fill="rgba(224,148,86,0.05)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="720,180 760,110 840,110 880,180 840,250 760,250" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="880,180 920,110 1000,110 1040,180 1000,250 920,250" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1040,180 1080,110 1160,110 1200,180 1160,250 1080,250" fill="rgba(224,148,86,0.04)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1200,180 1240,110 1320,110 1360,180 1320,250 1240,250" fill="none" stroke="#e09456" stroke-width="2.5"/>
+
+  <!-- Row 2 (offset) -->
+  <polygon points="320,320 360,250 440,250 480,320 440,390 360,390" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="480,320 520,250 600,250 640,320 600,390 520,390" fill="rgba(95,209,249,0.04)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="640,320 680,250 760,250 800,320 760,390 680,390" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="800,320 840,250 920,250 960,320 920,390 840,390" fill="rgba(224,148,86,0.06)" stroke="#e09456" stroke-width="3"/>
+  <polygon points="960,320 1000,250 1080,250 1120,320 1080,390 1000,390" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1120,320 1160,250 1240,250 1280,320 1240,390 1160,390" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1280,320 1320,250 1400,250 1440,320 1400,390 1320,390" fill="rgba(224,148,86,0.04)" stroke="#e09456" stroke-width="2.5"/>
+
+  <!-- Row 3 -->
+  <polygon points="400,460 440,390 520,390 560,460 520,530 440,530" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="560,460 600,390 680,390 720,460 680,530 600,530" fill="rgba(224,148,86,0.05)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="720,460 760,390 840,390 880,460 840,530 760,530" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="880,460 920,390 1000,390 1040,460 1000,530 920,530" fill="rgba(95,209,249,0.05)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1040,460 1080,390 1160,390 1200,460 1160,530 1080,530" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1200,460 1240,390 1320,390 1360,460 1320,530 1240,530" fill="rgba(224,148,86,0.04)" stroke="#e09456" stroke-width="2.5"/>
+
+  <!-- Row 4 (offset) -->
+  <polygon points="480,600 520,530 600,530 640,600 600,670 520,670" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="640,600 680,530 760,530 800,600 760,670 680,670" fill="rgba(224,148,86,0.06)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="800,600 840,530 920,530 960,600 920,670 840,670" fill="none" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="960,600 1000,530 1080,530 1120,600 1080,670 1000,670" fill="rgba(95,209,249,0.04)" stroke="#e09456" stroke-width="2.5"/>
+  <polygon points="1120,600 1160,530 1240,530 1280,600 1240,670 1160,670" fill="none" stroke="#e09456" stroke-width="2.5"/>
+
+  <!-- ── Territory borders (thick lines) ── -->
+  <polyline points="640,320 640,390 640,460" fill="none" stroke="rgba(224,148,86,0.7)" stroke-width="4"/>
+  <polyline points="800,320 800,460 800,600" fill="none" stroke="rgba(95,209,249,0.6)" stroke-width="3.5"/>
+  <polyline points="960,320 1120,320 1120,460" fill="none" stroke="rgba(224,148,86,0.5)" stroke-width="3"/>
+
+  <!-- ── Route line ── -->
+  <polyline points="480,320 640,320 800,180 960,180 1120,320 1280,320"
+    fill="none" stroke="#5fd1f9" stroke-width="3" stroke-dasharray="14,7"
+    marker-end="url(#route)"/>
+
+  <!-- Route waypoints -->
+  <circle cx="640" cy="320" r="10" fill="#5fd1f9" opacity="0.9"/>
+  <circle cx="800" cy="180" r="10" fill="#5fd1f9" opacity="0.9"/>
+  <circle cx="960" cy="180" r="10" fill="#5fd1f9" opacity="0.9"/>
+  <circle cx="1120" cy="320" r="10" fill="#5fd1f9" opacity="0.9"/>
+  <!-- Start marker -->
+  <circle cx="480" cy="320" r="14" fill="none" stroke="#e09456" stroke-width="3"/>
+  <circle cx="480" cy="320" r="6" fill="#e09456"/>
+
+  <!-- Terrain dots in some hexes -->
+  <circle cx="800" cy="320" r="6" fill="#e09456" opacity="0.7"/>
+  <circle cx="960" cy="320" r="6" fill="#e09456" opacity="0.7"/>
+  <circle cx="640" cy="460" r="5" fill="rgba(95,209,249,0.6)"/>
+  <circle cx="1040" cy="460" r="5" fill="rgba(95,209,249,0.6)"/>
+</svg>

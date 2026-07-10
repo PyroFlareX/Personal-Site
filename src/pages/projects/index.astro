@@ -11,26 +11,28 @@ const allTags = [...new Set(projects.flatMap(p => p.data.tags))].sort();
 ---
 <Base
   title="Projects — Zack Dell"
-  description="Selected projects in embedded systems, PCB design, firmware, and applications."
+  description="Selected projects in embedded systems, PCB design, firmware, GPU compute, and applications."
 >
-  <div class="bg-overlay" aria-hidden="true"></div>
-  <main class="wrap">
-    <section id="projects-page">
+  <main class="wrap" style="padding-top:3rem">
+    <div class="section-header reveal">
+      <span class="eyebrow">// ALL WORK</span>
       <h2>Projects</h2>
-      <TagFilter tags={allTags} />
-      <div id="projects-grid" class="grid">
-        {projects.map(p => (
-          <div data-tags={JSON.stringify(p.data.tags)}>
-            <ProjectCard
-              title={p.data.title}
-              description={p.data.description}
-              tags={p.data.tags}
-              images={p.data.images}
-              slug={p.slug}
-            />
-          </div>
-        ))}
-      </div>
-    </section>
+    </div>
+    <TagFilter tags={allTags} />
+    <div id="projects-grid" class="grid">
+      {projects.map(p => (
+        <div class="reveal" data-tags={JSON.stringify(p.data.tags)}>
+          <ProjectCard
+            title={p.data.title}
+            description={p.data.description}
+            tags={p.data.tags}
+            images={p.data.images}
+            slug={p.slug}
+            year={p.data.year}
+            role={p.data.role}
+          />
+        </div>
+      ))}
+    </div>
   </main>
 </Base>
