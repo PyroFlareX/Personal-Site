@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e09456"/>
+    </marker>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#5fd1f9"/>
+    </marker>
+    <pattern id="scanlines" width="1" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1" height="2" fill="rgba(0,0,0,0.15)"/>
+    </pattern>
+    <filter id="screenglow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#05070b"/>
+
+  <!-- Faint grid -->
+  <defs>
+    <pattern id="g2" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g2)"/>
+
+  <!-- === Left side: source C++ project === -->
+  <rect x="80" y="180" width="360" height="420" rx="12" fill="#0d1117" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <text x="260" y="216" text-anchor="middle" font-family="monospace" font-size="14" fill="#e09456" letter-spacing="2">SOURCE PROJECT</text>
+  <line x1="96" y1="226" x2="424" y2="226" stroke="rgba(224,148,86,0.25)" stroke-width="1"/>
+  <!-- Code lines -->
+  <rect x="104" y="244" width="120" height="10" rx="2" fill="#e09456" opacity="0.7"/>
+  <rect x="104" y="262" width="200" height="10" rx="2" fill="#8892a4" opacity="0.5"/>
+  <rect x="120" y="280" width="160" height="10" rx="2" fill="#5fd1f9" opacity="0.5"/>
+  <rect x="120" y="298" width="180" height="10" rx="2" fill="#8892a4" opacity="0.4"/>
+  <rect x="104" y="316" width="140" height="10" rx="2" fill="#a78bfa" opacity="0.5"/>
+  <rect x="120" y="334" width="100" height="10" rx="2" fill="#8892a4" opacity="0.4"/>
+  <rect x="104" y="352" width="200" height="10" rx="2" fill="#e09456" opacity="0.4"/>
+  <!-- Makefile badge -->
+  <rect x="104" y="400" width="136" height="36" rx="6" fill="#1a1d24" stroke="rgba(224,148,86,0.5)" stroke-width="1"/>
+  <text x="172" y="424" text-anchor="middle" font-family="monospace" font-size="13" fill="#e09456">Makefile</text>
+  <rect x="256" y="400" width="136" height="36" rx="6" fill="#1a1d24" stroke="rgba(95,209,249,0.5)" stroke-width="1"/>
+  <text x="324" y="424" text-anchor="middle" font-family="monospace" font-size="13" fill="#5fd1f9">conanfile.py</text>
+  <!-- Profile files -->
+  <text x="104" y="476" font-family="monospace" font-size="11" fill="#8892a4">profiles/</text>
+  <rect x="104" y="486" width="88" height="24" rx="4" fill="#1a1d24" stroke="rgba(224,148,86,0.3)" stroke-width="1"/>
+  <text x="148" y="503" text-anchor="middle" font-family="monospace" font-size="10" fill="#e09456">arm-3ds</text>
+  <rect x="204" y="486" width="104" height="24" rx="4" fill="#1a1d24" stroke="rgba(136,146,164,0.3)" stroke-width="1"/>
+  <text x="256" y="503" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">linux-x86</text>
+  <rect x="320" y="486" width="104" height="24" rx="4" fill="#1a1d24" stroke="rgba(136,146,164,0.3)" stroke-width="1"/>
+  <text x="372" y="503" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">mingw-w64</text>
+  <!-- make build command -->
+  <rect x="104" y="544" width="292" height="32" rx="4" fill="#060810" stroke="rgba(95,209,249,0.3)" stroke-width="1"/>
+  <text x="120" y="565" font-family="monospace" font-size="12" fill="#5fd1f9">$ make build PROFILE=arm-3ds</text>
+
+  <!-- Arrow: source → devkitARM toolchain -->
+  <line x1="440" y1="390" x2="600" y2="390" stroke="#e09456" stroke-width="2.5" stroke-dasharray="10,5" marker-end="url(#arrow)"/>
+  <text x="520" y="378" text-anchor="middle" font-family="monospace" font-size="11" fill="rgba(224,148,86,0.7)">cross-compile</text>
+
+  <!-- devkitARM box -->
+  <rect x="600" y="330" width="240" height="120" rx="10" fill="#0d1117" stroke="rgba(224,148,86,0.5)" stroke-width="1.5"/>
+  <text x="720" y="364" text-anchor="middle" font-family="monospace" font-size="13" fill="#e09456">devkitARM</text>
+  <text x="720" y="386" text-anchor="middle" font-family="monospace" font-size="11" fill="#8892a4">arm-none-eabi-g++</text>
+  <text x="720" y="404" text-anchor="middle" font-family="monospace" font-size="11" fill="#8892a4">ctrulib  /  libogc</text>
+  <text x="720" y="422" text-anchor="middle" font-family="monospace" font-size="11" fill="#5fd1f9">.3dsx  →  .cia</text>
+
+  <!-- Arrow: devkitARM → 3DS -->
+  <line x1="840" y1="390" x2="980" y2="390" stroke="#5fd1f9" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
+
+  <!-- === Nintendo 3DS clamshell === -->
+  <!-- Hinge -->
+  <rect x="1020" y="428" width="260" height="18" rx="9" fill="#444" stroke="#111" stroke-width="3"/>
+  <!-- Top shell (upper screen) -->
+  <rect x="1000" y="180" width="300" height="260" rx="18" fill="#2a2a2e" stroke="#111" stroke-width="6"/>
+  <!-- Top screen bezel -->
+  <rect x="1016" y="196" width="268" height="228" rx="10" fill="#111" stroke="#333" stroke-width="3"/>
+  <!-- Top screen display -->
+  <rect x="1028" y="208" width="244" height="204" rx="6" fill="#060d18"/>
+  <rect x="1028" y="208" width="244" height="204" rx="6" fill="url(#scanlines)"/>
+  <!-- Screen content: homebrew running -->
+  <text x="1150" y="256" text-anchor="middle" font-family="monospace" font-size="11" fill="#5fd1f9">Homebrew App</text>
+  <rect x="1048" y="266" width="204" height="8" rx="2" fill="rgba(224,148,86,0.6)"/>
+  <rect x="1048" y="282" width="160" height="8" rx="2" fill="rgba(95,209,249,0.4)"/>
+  <rect x="1048" y="298" width="180" height="8" rx="2" fill="rgba(255,255,255,0.2)"/>
+  <rect x="1048" y="314" width="140" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <!-- 3DS camera dot -->
+  <circle cx="1150" cy="196" r="4" fill="#333"/>
+
+  <!-- Bottom shell (lower screen / controls) -->
+  <rect x="980" y="446" width="340" height="280" rx="18" fill="#2a2a2e" stroke="#111" stroke-width="6"/>
+  <!-- Lower screen -->
+  <rect x="1028" y="462" width="244" height="186" rx="6" fill="#060d18"/>
+  <rect x="1028" y="462" width="244" height="186" rx="6" fill="url(#scanlines)"/>
+  <!-- Lower screen content -->
+  <text x="1150" y="492" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(95,209,249,0.6)">build output</text>
+  <text x="1048" y="512" font-family="monospace" font-size="9" fill="rgba(224,148,86,0.7)">linking .3dsx... ok</text>
+  <text x="1048" y="528" font-family="monospace" font-size="9" fill="rgba(95,209,249,0.5)">size: 428 KB</text>
+  <!-- D-pad -->
+  <rect x="1004" y="502" width="20" height="60" rx="4" fill="#444" stroke="#222" stroke-width="2"/>
+  <rect x="984" y="522" width="60" height="20" rx="4" fill="#444" stroke="#222" stroke-width="2"/>
+  <!-- ABXY buttons -->
+  <circle cx="1266" cy="526" r="10" fill="#e74c3c" stroke="#222" stroke-width="2"/>
+  <circle cx="1286" cy="506" r="10" fill="#f39c12" stroke="#222" stroke-width="2"/>
+  <circle cx="1246" cy="506" r="10" fill="#2ecc71" stroke="#222" stroke-width="2"/>
+  <circle cx="1266" cy="486" r="10" fill="#3498db" stroke="#222" stroke-width="2"/>
+  <!-- Shoulder buttons -->
+  <rect x="980" y="446" width="60" height="16" rx="8" fill="#1a1a1e" stroke="#111" stroke-width="3"/>
+  <rect x="1260" y="446" width="60" height="16" rx="8" fill="#1a1a1e" stroke="#111" stroke-width="3"/>
+
+  <!-- Glow under 3DS -->
+  <ellipse cx="1150" cy="750" rx="180" ry="18" fill="rgba(95,209,249,0.08)"/>
+
+  <!-- Title label bottom -->
+  <text x="800" y="855" text-anchor="middle" font-family="monospace" font-size="17" fill="rgba(224,148,86,0.35)" letter-spacing="4">3DS PORTABLE C++ BUILD SYSTEM</text>
+</svg>

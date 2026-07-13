@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <filter id="wglow">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="wglow-sm">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="sigfield" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5fd1f9" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#5fd1f9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#05070b"/>
+  <defs>
+    <pattern id="wg" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(95,209,249,0.025)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wg)"/>
+
+  <!-- Signal field background glow -->
+  <ellipse cx="800" cy="450" rx="500" ry="350" fill="url(#sigfield)"/>
+
+  <!-- === Left: PC + PCIe card === -->
+  <!-- PC tower outline -->
+  <rect x="80" y="200" width="220" height="380" rx="10" fill="#0d1117" stroke="rgba(224,148,86,0.4)" stroke-width="2"/>
+  <text x="190" y="232" text-anchor="middle" font-family="monospace" font-size="12" fill="#e09456">HOST PC</text>
+  <!-- PCIe slot -->
+  <rect x="110" y="280" width="160" height="56" rx="6" fill="#1a1d24" stroke="rgba(95,209,249,0.5)" stroke-width="1.5"/>
+  <text x="190" y="304" text-anchor="middle" font-family="monospace" font-size="10" fill="#5fd1f9">PCIe WiGig card</text>
+  <text x="190" y="322" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">60 GHz radio</text>
+  <!-- Antenna on card -->
+  <line x1="270" y1="290" x2="300" y2="260" stroke="rgba(95,209,249,0.7)" stroke-width="2"/>
+  <circle cx="300" cy="258" r="4" fill="#5fd1f9"/>
+  <!-- USB port -->
+  <rect x="110" y="360" width="160" height="40" rx="4" fill="#1a1d24" stroke="rgba(224,148,86,0.35)" stroke-width="1"/>
+  <text x="190" y="376" text-anchor="middle" font-family="monospace" font-size="10" fill="#e09456">USB companion</text>
+  <text x="190" y="392" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">control plane</text>
+  <!-- DRM output -->
+  <rect x="110" y="420" width="160" height="40" rx="4" fill="#1a1d24" stroke="rgba(167,139,250,0.35)" stroke-width="1"/>
+  <text x="190" y="436" text-anchor="middle" font-family="monospace" font-size="10" fill="#a78bfa">DisplayPort</text>
+  <text x="190" y="452" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">video out</text>
+
+  <!-- Linux kernel stack (left of PC) -->
+  <rect x="80" y="620" width="220" height="160" rx="8" fill="#0d1117" stroke="rgba(95,209,249,0.2)" stroke-width="1"/>
+  <text x="190" y="648" text-anchor="middle" font-family="monospace" font-size="11" fill="#5fd1f9">Linux Kernel</text>
+  <line x1="96" y1="656" x2="284" y2="656" stroke="rgba(95,209,249,0.15)" stroke-width="1"/>
+  <rect x="96" y="664" width="192" height="22" rx="3" fill="#1a1d24"/>
+  <text x="192" y="680" text-anchor="middle" font-family="monospace" font-size="10" fill="#5fd1f9">vive-wireless.ko</text>
+  <rect x="96" y="692" width="192" height="22" rx="3" fill="#0a0c10"/>
+  <text x="192" y="708" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">cfg80211</text>
+  <rect x="96" y="720" width="90" height="22" rx="3" fill="#0a0c10"/>
+  <text x="141" y="736" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">pci_driver</text>
+  <rect x="194" y="720" width="94" height="22" rx="3" fill="#0a0c10"/>
+  <text x="241" y="736" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">usb_driver</text>
+
+  <!-- Arrow from kernel to PC -->
+  <line x1="190" y1="620" x2="190" y2="580" stroke="rgba(95,209,249,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- === 60 GHz wave arcs (center) === -->
+  <!-- These radiate from left (PC antenna) toward right (headset) -->
+  <g opacity="0.9" filter="url(#wglow)">
+    <path d="M 420,450 Q 500,340 420,230" fill="none" stroke="#5fd1f9" stroke-width="2.5" opacity="0.8"/>
+    <path d="M 460,450 Q 570,300 460,150" fill="none" stroke="#5fd1f9" stroke-width="2" opacity="0.65"/>
+    <path d="M 500,450 Q 640,260 500,70"  fill="none" stroke="#5fd1f9" stroke-width="1.5" opacity="0.45"/>
+  </g>
+  <g opacity="0.9" filter="url(#wglow)">
+    <path d="M 420,450 Q 500,560 420,670" fill="none" stroke="#5fd1f9" stroke-width="2.5" opacity="0.8"/>
+    <path d="M 460,450 Q 570,600 460,750" fill="none" stroke="#5fd1f9" stroke-width="2" opacity="0.65"/>
+    <path d="M 500,450 Q 640,640 500,830" fill="none" stroke="#5fd1f9" stroke-width="1.5" opacity="0.45"/>
+  </g>
+  <!-- Frequency label -->
+  <text x="490" y="450" font-family="monospace" font-size="14" fill="#5fd1f9" filter="url(#wglow-sm)">60 GHz</text>
+  <text x="490" y="470" font-family="monospace" font-size="11" fill="rgba(95,209,249,0.5)">IEEE 802.11ad</text>
+
+  <!-- === Right: VR Headset (receiver) === -->
+  <!-- Headset body -->
+  <rect x="980" y="300" width="480" height="260" rx="30" fill="#1a1d24" stroke="#e8eaf0" stroke-width="5"/>
+  <!-- Face padding -->
+  <rect x="998" y="524" width="444" height="24" rx="12" fill="#c8cad0" stroke="#aaa" stroke-width="3"/>
+  <!-- Top strap -->
+  <rect x="1180" y="250" width="80" height="56" rx="8" fill="#c8cad0" stroke="#aaa" stroke-width="3"/>
+  <!-- Side straps -->
+  <rect x="912" y="385" width="78" height="26" rx="8" fill="#c8cad0" stroke="#aaa" stroke-width="3"/>
+  <rect x="1450" y="385" width="78" height="26" rx="8" fill="#c8cad0" stroke="#aaa" stroke-width="3"/>
+  <!-- Visor -->
+  <rect x="1006" y="320" width="428" height="180" rx="16" fill="#0d1117" stroke="#5fd1f9" stroke-width="2.5" opacity="0.9"/>
+  <!-- Lens glint -->
+  <line x1="1022" y1="334" x2="1070" y2="370" stroke="rgba(95,209,249,0.15)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- "HTC VIVE" label -->
+  <text x="1220" y="416" text-anchor="middle" font-family="monospace" font-size="16" fill="rgba(232,234,240,0.5)" letter-spacing="4">HTC VIVE</text>
+  <!-- Receiver antenna dot -->
+  <circle cx="1218" cy="305" r="8" fill="#5fd1f9" filter="url(#wglow)"/>
+  <text x="1218" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(95,209,249,0.6)">rx</text>
+
+  <!-- Signal link line (PC antenna → headset rx) -->
+  <line x1="380" y1="450" x2="990" y2="450" stroke="rgba(95,209,249,0.12)" stroke-width="40"/>
+  <line x1="380" y1="450" x2="990" y2="450" stroke="rgba(95,209,249,0.25)" stroke-width="2" stroke-dasharray="16,8"/>
+
+  <!-- Link quality / beamforming sectors (between the two) -->
+  <g opacity="0.4">
+    <path d="M 680,450 L 720,400 L 760,450 L 720,500 Z" fill="none" stroke="#5fd1f9" stroke-width="1"/>
+    <path d="M 760,450 L 800,400 L 840,450 L 800,500 Z" fill="rgba(95,209,249,0.15)" stroke="#5fd1f9" stroke-width="1"/>
+    <path d="M 840,450 L 880,400 L 920,450 L 880,500 Z" fill="none" stroke="#5fd1f9" stroke-width="1"/>
+    <text x="800" y="455" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(95,209,249,0.7)">best sector</text>
+  </g>
+
+  <!-- chardev interface (userspace label) -->
+  <rect x="980" y="680" width="480" height="80" rx="8" fill="#0d1117" stroke="rgba(167,139,250,0.35)" stroke-width="1.5"/>
+  <text x="1220" y="706" text-anchor="middle" font-family="monospace" font-size="12" fill="#a78bfa">userspace</text>
+  <text x="1220" y="726" text-anchor="middle" font-family="monospace" font-size="11" fill="#8892a4">/dev/vive-stream  →  SteamVR / OpenVR</text>
+  <text x="1220" y="746" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(136,146,164,0.5)">DMA-coherent frame buffers · no copy</text>
+
+  <!-- Title -->
+  <text x="800" y="855" text-anchor="middle" font-family="monospace" font-size="17" fill="rgba(95,209,249,0.3)" letter-spacing="4">VIVE WIRELESS LINUX DRIVER</text>
+</svg>

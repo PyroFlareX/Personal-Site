@@ -6,7 +6,7 @@ tags: ["C++", "Multithreading", "Engine", "Game Dev", "Systems"]
 year: 2024
 role: "Engine Programmer"
 repo: ""
-images: ["/assets/projects/long-century.svg"]
+images: ["/assets/projects/engine-job-system.svg"]
 specs:
   Language: "C++17"
   Concurrency: "Lock-free ring buffer, work stealing"

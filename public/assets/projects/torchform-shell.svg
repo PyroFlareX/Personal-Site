@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <filter id="tglow">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="tglow-sm">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="upper-screen-clip">
+      <rect x="456" y="148" width="688" height="388" rx="6"/>
+    </clipPath>
+    <clipPath id="lower-screen-clip">
+      <rect x="566" y="560" width="468" height="160" rx="6"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#05070b"/>
+  <defs>
+    <pattern id="tg" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#tg)"/>
+
+  <!-- === Device body === -->
+  <!-- Main shell -->
+  <rect x="340" y="100" width="920" height="700" rx="48" fill="#1a1d24" stroke="#0d0f14" stroke-width="6"/>
+  <!-- Inner bevel -->
+  <rect x="348" y="108" width="904" height="684" rx="44" fill="none" stroke="rgba(232,234,240,0.06)" stroke-width="2"/>
+
+  <!-- Upper screen bezel -->
+  <rect x="440" y="132" width="720" height="420" rx="14" fill="#0a0c10" stroke="rgba(95,209,249,0.3)" stroke-width="2"/>
+  <!-- Upper screen display -->
+  <rect x="456" y="148" width="688" height="388" rx="6" fill="#0d0f14"/>
+
+  <!-- Upper screen content: app + radial menu overlay -->
+  <!-- App background (some app running) -->
+  <rect x="456" y="148" width="688" height="388" rx="6" fill="#0d0f14" clip-path="url(#upper-screen-clip)"/>
+  <!-- Faint app content (terminal lines) -->
+  <g clip-path="url(#upper-screen-clip)">
+    <rect x="476" y="168" width="260" height="10" rx="2" fill="rgba(95,209,249,0.15)"/>
+    <rect x="476" y="186" width="200" height="10" rx="2" fill="rgba(95,209,249,0.1)"/>
+    <rect x="476" y="204" width="300" height="10" rx="2" fill="rgba(95,209,249,0.08)"/>
+    <rect x="476" y="222" width="180" height="10" rx="2" fill="rgba(95,209,249,0.06)"/>
+
+    <!-- Radial menu overlay (center of upper screen) -->
+    <!-- Dim overlay -->
+    <rect x="456" y="148" width="688" height="388" fill="rgba(0,0,0,0.55)"/>
+    <!-- Radial background circle -->
+    <circle cx="800" cy="342" r="150" fill="rgba(13,15,20,0.92)" stroke="rgba(95,209,249,0.2)" stroke-width="1.5"/>
+
+    <!-- Radial segments (8 sectors) -->
+    <!-- Top: Terminal -->
+    <path d="M800,342 L800,202 A140,140 0 0,1 899,262 Z" fill="rgba(95,209,249,0.12)" stroke="rgba(95,209,249,0.3)" stroke-width="1.5"/>
+    <text x="840" y="255" text-anchor="middle" font-family="monospace" font-size="10" fill="#5fd1f9">terminal</text>
+    <!-- Top-right: Files -->
+    <path d="M800,342 L899,262 A140,140 0 0,1 940,342 Z" fill="rgba(224,148,86,0.08)" stroke="rgba(224,148,86,0.25)" stroke-width="1.5"/>
+    <text x="908" y="315" text-anchor="middle" font-family="monospace" font-size="10" fill="#e09456">files</text>
+    <!-- Right: Settings -->
+    <path d="M800,342 L940,342 A140,140 0 0,1 899,422 Z" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.25)" stroke-width="1.5"/>
+    <text x="908" y="378" text-anchor="middle" font-family="monospace" font-size="10" fill="#a78bfa">settings</text>
+    <!-- Bottom-right: Browser -->
+    <path d="M800,342 L899,422 A140,140 0 0,1 800,482 Z" fill="rgba(52,211,153,0.08)" stroke="rgba(52,211,153,0.2)" stroke-width="1.5"/>
+    <text x="842" y="452" text-anchor="middle" font-family="monospace" font-size="10" fill="#34d399">browser</text>
+    <!-- Bottom -->
+    <path d="M800,342 L800,482 A140,140 0 0,1 701,422 Z" fill="rgba(95,209,249,0.05)" stroke="rgba(95,209,249,0.15)" stroke-width="1.5"/>
+    <text x="758" y="452" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(95,209,249,0.5)">media</text>
+    <!-- Bottom-left -->
+    <path d="M800,342 L701,422 A140,140 0 0,1 660,342 Z" fill="rgba(224,148,86,0.05)" stroke="rgba(224,148,86,0.15)" stroke-width="1.5"/>
+    <text x="692" y="378" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(224,148,86,0.5)">power</text>
+    <!-- Left -->
+    <path d="M800,342 L660,342 A140,140 0 0,1 701,262 Z" fill="rgba(95,209,249,0.05)" stroke="rgba(95,209,249,0.15)" stroke-width="1.5"/>
+    <text x="692" y="305" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(95,209,249,0.5)">wifi</text>
+    <!-- Top-left (selected highlight) -->
+    <path d="M800,342 L701,262 A140,140 0 0,1 800,202 Z" fill="rgba(95,209,249,0.22)" stroke="#5fd1f9" stroke-width="2.5" filter="url(#tglow-sm)"/>
+    <text x="758" y="255" text-anchor="middle" font-family="monospace" font-size="10" fill="#5fd1f9">apps</text>
+
+    <!-- Center hub -->
+    <circle cx="800" cy="342" r="36" fill="#1a1d24" stroke="rgba(95,209,249,0.5)" stroke-width="2"/>
+    <circle cx="800" cy="342" r="6" fill="#5fd1f9" filter="url(#tglow)"/>
+
+    <!-- Stick indicator (pointing top-left) -->
+    <line x1="800" y1="342" x2="758" y2="298" stroke="#5fd1f9" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="758" cy="298" r="5" fill="#5fd1f9" opacity="0.8"/>
+  </g>
+
+  <!-- Hinge bar between screens -->
+  <rect x="440" y="552" width="720" height="16" rx="4" fill="#0d0f14"/>
+
+  <!-- Lower screen bezel -->
+  <rect x="550" y="548" width="500" height="196" rx="10" fill="#0a0c10" stroke="rgba(224,148,86,0.25)" stroke-width="1.5"/>
+  <!-- Lower screen display -->
+  <rect x="566" y="560" width="468" height="160" rx="6" fill="#0d0f14"/>
+
+  <!-- Lower screen content: status bar -->
+  <g clip-path="url(#lower-screen-clip)">
+    <!-- Status bar bg -->
+    <rect x="566" y="560" width="468" height="160" fill="#0d0f14"/>
+    <!-- Time -->
+    <text x="610" y="590" font-family="monospace" font-size="14" fill="#e8eaf0">14:32</text>
+    <!-- Wifi icon -->
+    <path d="M720,578 Q740,564 760,578" fill="none" stroke="#5fd1f9" stroke-width="2" stroke-linecap="round"/>
+    <path d="M728,590 Q740,580 752,590" fill="none" stroke="#5fd1f9" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="740" cy="598" r="3" fill="#5fd1f9"/>
+    <!-- Battery -->
+    <rect x="780" y="576" width="36" height="18" rx="3" fill="none" stroke="#e8eaf0" stroke-width="1.5"/>
+    <rect x="816" y="581" width="4" height="8" rx="1" fill="#e8eaf0"/>
+    <rect x="782" y="578" width="28" height="14" rx="2" fill="#34d399" opacity="0.8"/>
+    <text x="830" y="590" font-family="monospace" font-size="10" fill="#8892a4">87%</text>
+    <!-- Divider -->
+    <line x1="566" y1="608" x2="1034" y2="608" stroke="rgba(224,148,86,0.15)" stroke-width="1"/>
+    <!-- App switcher preview chips -->
+    <rect x="580" y="618" width="100" height="50" rx="6" fill="#1a1d24" stroke="rgba(95,209,249,0.4)" stroke-width="1.5"/>
+    <text x="630" y="648" text-anchor="middle" font-family="monospace" font-size="10" fill="#5fd1f9">terminal</text>
+    <rect x="692" y="618" width="100" height="50" rx="6" fill="#1a1d24" stroke="rgba(224,148,86,0.3)" stroke-width="1"/>
+    <text x="742" y="648" text-anchor="middle" font-family="monospace" font-size="10" fill="#e09456">browser</text>
+    <rect x="804" y="618" width="100" height="50" rx="6" fill="#1a1d24" stroke="rgba(136,146,164,0.2)" stroke-width="1"/>
+    <text x="854" y="648" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">files</text>
+    <!-- virtual keyboard hint -->
+    <text x="800" y="706" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(136,146,164,0.3)">[ tap for keyboard ]</text>
+  </g>
+
+  <!-- Controller buttons (right side) -->
+  <!-- ABXY -->
+  <circle cx="1170" cy="355" r="18" fill="#e74c3c" stroke="#0d0f14" stroke-width="3"/>
+  <text x="1170" y="361" text-anchor="middle" font-family="monospace" font-size="12" fill="#fff" font-weight="bold">B</text>
+  <circle cx="1210" cy="315" r="18" fill="#f39c12" stroke="#0d0f14" stroke-width="3"/>
+  <text x="1210" y="321" text-anchor="middle" font-family="monospace" font-size="12" fill="#fff" font-weight="bold">Y</text>
+  <circle cx="1130" cy="315" r="18" fill="#2ecc71" stroke="#0d0f14" stroke-width="3"/>
+  <text x="1130" y="321" text-anchor="middle" font-family="monospace" font-size="12" fill="#fff" font-weight="bold">X</text>
+  <circle cx="1170" cy="275" r="18" fill="#3498db" stroke="#0d0f14" stroke-width="3"/>
+  <text x="1170" y="281" text-anchor="middle" font-family="monospace" font-size="12" fill="#fff" font-weight="bold">A</text>
+
+  <!-- D-pad (left side) -->
+  <rect x="428" y="304" width="22" height="68" rx="6" fill="#0d0f14" stroke="rgba(232,234,240,0.15)" stroke-width="2"/>
+  <rect x="408" y="324" width="62" height="28" rx="6" fill="#0d0f14" stroke="rgba(232,234,240,0.15)" stroke-width="2"/>
+
+  <!-- Shoulder buttons -->
+  <rect x="380" y="120" width="120" height="28" rx="12" fill="#1a1d24" stroke="rgba(232,234,240,0.1)" stroke-width="2"/>
+  <text x="440" y="139" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">L1</text>
+  <rect x="1100" y="120" width="120" height="28" rx="12" fill="#1a1d24" stroke="rgba(232,234,240,0.1)" stroke-width="2"/>
+  <text x="1160" y="139" text-anchor="middle" font-family="monospace" font-size="10" fill="#8892a4">R1</text>
+
+  <!-- Cirque trackpad indicator -->
+  <ellipse cx="480" cy="480" rx="48" ry="36" fill="#0d0f14" stroke="rgba(224,148,86,0.4)" stroke-width="1.5"/>
+  <text x="480" y="484" text-anchor="middle" font-family="monospace" font-size="9" fill="rgba(224,148,86,0.6)">cirque</text>
+
+  <!-- Right analog stick -->
+  <circle cx="1090" cy="480" r="30" fill="#0d0f14" stroke="rgba(232,234,240,0.15)" stroke-width="2"/>
+  <circle cx="1095" cy="474" r="10" fill="#1a1d24" stroke="rgba(95,209,249,0.4)" stroke-width="1.5"/>
+
+  <!-- Stack labels right side -->
+  <rect x="1280" y="220" width="240" height="36" rx="6" fill="#0d1117" stroke="rgba(95,209,249,0.3)" stroke-width="1"/>
+  <text x="1400" y="244" text-anchor="middle" font-family="monospace" font-size="12" fill="#5fd1f9">Slint UI shell</text>
+  <rect x="1280" y="268" width="240" height="36" rx="6" fill="#0d1117" stroke="rgba(224,148,86,0.3)" stroke-width="1"/>
+  <text x="1400" y="292" text-anchor="middle" font-family="monospace" font-size="12" fill="#e09456">Smithay compositor</text>
+  <rect x="1280" y="316" width="240" height="36" rx="6" fill="#0d1117" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+  <text x="1400" y="340" text-anchor="middle" font-family="monospace" font-size="12" fill="#a78bfa">torchform-inputd</text>
+  <rect x="1280" y="364" width="240" height="36" rx="6" fill="#0d1117" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+  <text x="1400" y="388" text-anchor="middle" font-family="monospace" font-size="12" fill="#34d399">Alpine / RPi CM5</text>
+
+  <!-- Connector lines to device -->
+  <line x1="1280" y1="238" x2="1260" y2="238" stroke="rgba(95,209,249,0.2)" stroke-width="1"/>
+  <line x1="1280" y1="286" x2="1260" y2="286" stroke="rgba(224,148,86,0.2)" stroke-width="1"/>
+  <line x1="1280" y1="334" x2="1260" y2="334" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+  <line x1="1280" y1="382" x2="1260" y2="382" stroke="rgba(52,211,153,0.2)" stroke-width="1"/>
+
+  <text x="800" y="855" text-anchor="middle" font-family="monospace" font-size="17" fill="rgba(224,148,86,0.3)" letter-spacing="4">TORCHFORM HANDHELD SHELL</text>
+</svg>

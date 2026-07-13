@@ -3,10 +3,10 @@ title: "Torchform"
 description: "A Rust-native desktop environment for Project Minerva — a handheld device with dual DSI displays, a custom controller layout, and a Cirque SPI trackpad."
 long_description: "Torchform is a full desktop environment built in Rust for Project Minerva, a custom handheld. It combines a Smithay Wayland compositor managing dual DSI outputs with a Slint UI shell, a hardware input daemon abstracting a Cirque SPI trackpad and USB HID gamepad into semantic actions, and a TOML-driven configuration system — all designed to run headless on a Raspberry Pi CM5."
 tags: ["Rust", "Linux", "Wayland", "Embedded", "Systems", "UI/UX"]
-year: 2025
+year: 2026
 role: "Lead Developer"
 repo: ""
-images: ["/assets/projects/basalt-vr.svg"]
+images: ["/assets/projects/torchform-shell.svg"]
 specs:
   Language: "Rust"
   UI Toolkit: "Slint"

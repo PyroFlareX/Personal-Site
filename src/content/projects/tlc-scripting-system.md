@@ -6,7 +6,7 @@ tags: ["C++", "AngelScript", "Scripting", "Engine", "Game Dev", "Modding"]
 year: 2024
 role: "Engine Programmer"
 repo: ""
-images: ["/assets/projects/long-century.svg"]
+images: ["/assets/projects/tlc-scripting.svg"]
 specs:
   Language: "AngelScript (bytecode VM)"
   Host: "Custom C++ engine"

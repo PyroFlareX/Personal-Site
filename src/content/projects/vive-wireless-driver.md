@@ -6,7 +6,7 @@ tags: ["Linux", "Kernel", "C", "Driver", "WiGig", "VR/XR", "Reverse Engineering"
 year: 2025
 role: "Kernel Developer"
 repo: ""
-images: ["/assets/projects/basalt-vr.svg"]
+images: ["/assets/projects/vive-wireless-driver.svg"]
 specs:
   Kernel: "Linux (out-of-tree module)"
   Language: "C"

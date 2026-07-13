@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e09456" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#b86a2a" stop-opacity="0.3"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5fd1f9" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1a7aaa" stop-opacity="0.3"/>
+    </radialGradient>
+    <radialGradient id="blob3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#5b21b6" stop-opacity="0.3"/>
+    </radialGradient>
+    <radialGradient id="blob4" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#991b1b" stop-opacity="0.3"/>
+    </radialGradient>
+    <radialGradient id="blob5" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#065f46" stop-opacity="0.3"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#05070b"/>
+
+  <!-- Left panel -->
+  <rect x="0" y="0" width="280" height="900" fill="#0d1117"/>
+  <rect x="0" y="0" width="280" height="900" fill="none" stroke="rgba(224,148,86,0.2)" stroke-width="1"/>
+  <!-- Panel title -->
+  <text x="140" y="48" text-anchor="middle" font-family="monospace" font-size="15" fill="#e09456" letter-spacing="3">BLOB CONFIG</text>
+  <line x1="20" y1="62" x2="260" y2="62" stroke="rgba(224,148,86,0.3)" stroke-width="1"/>
+
+  <!-- Mass slider -->
+  <text x="24" y="105" font-family="monospace" font-size="12" fill="#8892a4">mass</text>
+  <rect x="24" y="114" width="232" height="6" rx="3" fill="#1a1d24"/>
+  <rect x="24" y="114" width="148" height="6" rx="3" fill="#e09456" opacity="0.8"/>
+  <circle cx="172" cy="117" r="9" fill="#e09456" filter="url(#glow)"/>
+  <text x="256" y="122" font-family="monospace" font-size="11" fill="#5fd1f9" text-anchor="end">6.4</text>
+
+  <!-- Radius slider -->
+  <text x="24" y="155" font-family="monospace" font-size="12" fill="#8892a4">radius</text>
+  <rect x="24" y="164" width="232" height="6" rx="3" fill="#1a1d24"/>
+  <rect x="24" y="164" width="88" height="6" rx="3" fill="#5fd1f9" opacity="0.8"/>
+  <circle cx="112" cy="167" r="9" fill="#5fd1f9" filter="url(#glow)"/>
+  <text x="256" y="172" font-family="monospace" font-size="11" fill="#5fd1f9" text-anchor="end">38</text>
+
+  <!-- Color -->
+  <text x="24" y="205" font-family="monospace" font-size="12" fill="#8892a4">color</text>
+  <rect x="24" y="214" width="36" height="24" rx="4" fill="#e09456"/>
+  <rect x="68" y="214" width="36" height="24" rx="4" fill="#5fd1f9"/>
+  <rect x="112" y="214" width="36" height="24" rx="4" fill="#a78bfa"/>
+  <rect x="156" y="214" width="36" height="24" rx="4" fill="#f87171"/>
+  <rect x="200" y="214" width="36" height="24" rx="4" fill="#34d399"/>
+  <!-- selected indicator -->
+  <rect x="24" y="214" width="36" height="24" rx="4" fill="none" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Gravity toggle -->
+  <text x="24" y="265" font-family="monospace" font-size="12" fill="#8892a4">gravity</text>
+  <rect x="180" y="250" width="56" height="22" rx="11" fill="#1a7aaa"/>
+  <circle cx="225" cy="261" r="9" fill="#5fd1f9"/>
+  <text x="214" y="248" font-family="monospace" font-size="10" fill="#5fd1f9">ON</text>
+
+  <!-- Elasticity -->
+  <text x="24" y="308" font-family="monospace" font-size="12" fill="#8892a4">elasticity</text>
+  <rect x="24" y="316" width="232" height="6" rx="3" fill="#1a1d24"/>
+  <rect x="24" y="316" width="185" height="6" rx="3" fill="#a78bfa" opacity="0.8"/>
+  <circle cx="209" cy="319" r="9" fill="#a78bfa" filter="url(#glow)"/>
+  <text x="256" y="324" font-family="monospace" font-size="11" fill="#5fd1f9" text-anchor="end">0.8</text>
+
+  <!-- Reset hint -->
+  <rect x="44" y="820" width="192" height="38" rx="6" fill="#1a1d24" stroke="rgba(224,148,86,0.4)" stroke-width="1"/>
+  <text x="140" y="844" text-anchor="middle" font-family="monospace" font-size="13" fill="#e09456">[ N ] reset</text>
+
+  <!-- Divider between panel and canvas -->
+  <line x1="280" y1="0" x2="280" y2="900" stroke="rgba(224,148,86,0.35)" stroke-width="1.5"/>
+
+  <!-- Canvas grid (faint) -->
+  <defs>
+    <pattern id="cgrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(95,209,249,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="280" y="0" width="1320" height="900" fill="url(#cgrid)"/>
+
+  <!-- Gravity field lines (subtle) -->
+  <circle cx="900" cy="450" r="200" fill="none" stroke="rgba(224,148,86,0.04)" stroke-width="1"/>
+  <circle cx="900" cy="450" r="350" fill="none" stroke="rgba(224,148,86,0.03)" stroke-width="1"/>
+  <circle cx="900" cy="450" r="500" fill="none" stroke="rgba(224,148,86,0.02)" stroke-width="1"/>
+
+  <!-- Blobs with trails -->
+  <!-- Large copper blob, center -->
+  <circle cx="860" cy="430" r="72" fill="url(#blob1)" filter="url(#glow)"/>
+  <circle cx="860" cy="430" r="72" fill="none" stroke="rgba(224,148,86,0.6)" stroke-width="1.5"/>
+  <text x="860" y="436" text-anchor="middle" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.6)">m=6.4</text>
+
+  <!-- Medium cyan blob -->
+  <circle cx="1080" cy="290" r="38" fill="url(#blob2)" filter="url(#glow)"/>
+  <circle cx="1080" cy="290" r="38" fill="none" stroke="rgba(95,209,249,0.6)" stroke-width="1.5"/>
+
+  <!-- Small purple blob -->
+  <circle cx="680" cy="600" r="22" fill="url(#blob3)" filter="url(#glow)"/>
+  <circle cx="680" cy="600" r="22" fill="none" stroke="rgba(167,139,250,0.6)" stroke-width="1.5"/>
+
+  <!-- Large red blob -->
+  <circle cx="1240" cy="580" r="54" fill="url(#blob4)" filter="url(#glow)"/>
+  <circle cx="1240" cy="580" r="54" fill="none" stroke="rgba(248,113,113,0.6)" stroke-width="1.5"/>
+
+  <!-- Small green blob -->
+  <circle cx="520" cy="220" r="18" fill="url(#blob5)" filter="url(#glow)"/>
+  <circle cx="520" cy="220" r="18" fill="none" stroke="rgba(52,211,153,0.6)" stroke-width="1.5"/>
+
+  <!-- Small copper blob, upper right -->
+  <circle cx="1380" cy="200" r="28" fill="url(#blob1)" filter="url(#glow)" opacity="0.8"/>
+
+  <!-- Small cyan, lower left -->
+  <circle cx="380" cy="750" r="14" fill="url(#blob2)" filter="url(#glow)" opacity="0.8"/>
+
+  <!-- Medium purple, mid -->
+  <circle cx="1120" cy="700" r="32" fill="url(#blob3)" filter="url(#glow)" opacity="0.75"/>
+
+  <!-- Velocity arrows (faint) -->
+  <line x1="860" y1="358" x2="860" y2="305" stroke="rgba(224,148,86,0.4)" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="1080" y1="252" x2="1140" y2="230" stroke="rgba(95,209,249,0.4)" stroke-width="2"/>
+  <line x1="1240" y1="526" x2="1200" y2="490" stroke="rgba(248,113,113,0.4)" stroke-width="2"/>
+
+  <!-- Controls hint bottom right -->
+  <text x="1580" y="870" text-anchor="end" font-family="monospace" font-size="11" fill="rgba(136,146,164,0.5)">scroll: zoom · mmb: pan · click: place</text>
+</svg>
