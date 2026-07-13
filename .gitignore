@@ -171,4 +171,7 @@ _site/
 # Local screenshot — do not commit
 assets/image.png
 
+# AI assistant notes — local only
+CLAUDE.md
+
 TODOS/

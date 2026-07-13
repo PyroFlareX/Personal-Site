@@ -1,7 +1,7 @@
 ---
 title: "Automated Drink Maker"
 description: "Arduino Mega-based assembly-line beverage dispenser with stepper motors, closed-loop sensor feedback, and web recipe control."
-long_description: "Built an automated drink maker using an Arduino Mega and stepper-driven dispensers to deliver precise, repeatable volumes with real-time sensor feedback, safety interlocks, and a web interface for recipe management."
+long_description: "Automated beverage dispenser on an Arduino Mega. Stepper-driven peristaltic pumps, real-time flow and temperature feedback, safety interlocks, and a web interface for recipe programming and monitoring."
 tags: ["Arduino", "Automation", "Embedded", "Mechanics"]
 year: 2024
 role: "Embedded Systems Engineer"
@@ -14,12 +14,12 @@ specs:
   Interface: "Web UI for recipe control"
 outcome: "Repeatable, high-precision sample production for QA and demonstration."
 highlights:
-  - "Designed and built an Arduino Mega-based automated beverage dispenser using stepper-driven dispensers for precise, repeatable volume delivery"
-  - "Implemented real-time sensor feedback using flow and temperature sensors with closed-loop control"
-  - "Built safety interlock system and web-based recipe interface enabling remote recipe management"
+  - "Stepper-driven peristaltic pumps deliver precise, repeatable volume per dispense; flow and temperature sensors provide closed-loop correction against recipe targets"
+  - "Safety interlock system prevents operation outside defined parameters; web interface handles recipe programming and real-time monitoring without touching the hardware"
+  - "Targeted the same recipe management pattern used in industrial dispensing systems: program once, run repeatedly with consistent output"
 draft: false
 ---
 
-An assembly-line beverage automation system driven by an Arduino Mega, stepper motors, and sensor feedback. The goal was repeatable, precise dispensing — both for QA validation and demonstration.
+An assembly-line beverage automation system on an Arduino Mega, stepper motors, and sensor feedback. The goal was repeatable, precise dispensing for QA validation and demonstration.
 
-Stepper-driven peristaltic pumps control fluid volume per dispense with sub-milliliter precision. Flow and temperature sensors provide real-time feedback with closed-loop correction against recipe targets. Safety interlocks prevent operation outside defined parameters. A web interface allows recipe programming and real-time monitoring without touching the hardware directly — the same pattern as industrial recipe management systems.
+Stepper-driven peristaltic pumps control fluid volume per dispense with sub-milliliter precision. Flow and temperature sensors feed a closed-loop correction loop against recipe targets. Safety interlocks prevent operation outside defined parameters. A web interface handles recipe programming and real-time monitoring without touching the hardware directly, which is the same pattern as industrial recipe management systems.
