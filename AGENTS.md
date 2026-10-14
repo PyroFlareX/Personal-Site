@@ -14,7 +14,7 @@ npm run check    # astro type-check
 npm run build    # outputs dist/
 ```
 
-Do **not** push `feature/astro-rewrite` directly. The deploy workflow triggers automatically on push and publishes to Pages.
+Do not push directly to `feature/astro-rewrite` unless intentionally deploying it. Production is published from `master`; use the workflow's manual dispatch for a deployment without a source change.
 
 ---
 
